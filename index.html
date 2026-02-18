@@ -3,89 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PrepAI - Interview Answer Evaluator</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>PrepAI™ — Interview Answer Evaluator</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-700: #374151;
-  --gray-900: #111827;
+  --ink:       #0f172a;
+  --ink-soft:  #475569;
+  --ink-faint: #94a3b8;
+  --bg:        #f8fafc;
+  --surface:   #ffffff;
+  --border:    #e2e8f0;
+  --accent:    #7c3aed;
+  --accent-dk: #6d28d9;
+  --success:   #10b981;
+  --warn:      #f59e0b;
+  --danger:    #ef4444;
+  --radius:    14px;
+  --shadow:    0 4px 24px rgba(124,58,237,0.12);
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--gray-50);
-  color: var(--gray-900);
-  line-height: 1.6;
-  padding: 20px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 0 0 80px;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  padding: 32px;
+/* HEADER */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.header {
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo sup {
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.header-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  background: rgba(124,58,237,0.05);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* HERO */
+.hero {
   text-align: center;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 2px solid var(--gray-100);
+  padding: 52px 24px 36px;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-.header h1 {
-  font-size: 32px;
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(236,72,153,0.1) 100%);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(124,58,237,0.2);
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.hero h1 .gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 28px;
+}
+
+.fear-box {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1.5px solid #f59e0b;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 24px auto;
+  max-width: 520px;
+  text-align: left;
+}
+
+.fear-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 700;
-  color: var(--gray-900);
+  color: #92400e;
+  font-size: 15px;
   margin-bottom: 8px;
 }
 
-.header p {
-  font-size: 16px;
-  color: var(--gray-700);
+.fear-text {
+  font-size: 14px;
+  color: #78350f;
+  line-height: 1.6;
 }
 
-.field {
-  margin-bottom: 20px;
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.3);
 }
+
+.btn-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.4);
+}
+
+/* TRUST PILLS */
+.trust-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.trust-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.trust-pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* MAIN CARD */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  padding: 28px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* FORM */
+.field { margin-bottom: 16px; }
 
 .field label {
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--gray-700);
-  margin-bottom: 8px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 7px;
 }
 
 .field input,
 .field textarea {
   width: 100%;
   padding: 12px 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
-  border: 1.5px solid var(--gray-300);
-  border-radius: 8px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
   outline: none;
-  transition: all 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .field input:focus,
 .field textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+  background: white;
 }
 
 .field textarea {
@@ -95,22 +254,19 @@ body {
 }
 
 .field input::placeholder,
-.field textarea::placeholder {
-  color: var(--gray-300);
-}
+.field textarea::placeholder { color: var(--ink-faint); }
 
-.button-row {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
+.field-hint { font-size: 12px; color: var(--ink-faint); margin-top: 6px; }
+
+.button-row { display: flex; gap: 12px; margin-top: 24px; }
 
 .btn {
-  padding: 12px 24px;
+  padding: 14px 24px;
+  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
@@ -120,204 +276,331 @@ body {
 }
 
 .btn-primary {
-  background: var(--primary);
-  color: white;
   flex: 1;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  color: white;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.3);
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.4);
 }
 
 .btn-secondary {
-  background: var(--gray-100);
-  color: var(--gray-700);
+  background: var(--bg);
+  color: var(--ink-soft);
+  border: 1px solid var(--border);
 }
 
-.btn-secondary:hover {
-  background: var(--gray-200);
-}
+.btn-secondary:hover { background: #e2e8f0; }
 
+/* LOADER */
 .loader {
   display: none;
-  margin-top: 20px;
-  text-align: center;
-  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0 16px;
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--gray-200);
-  border-top-color: var(--primary);
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin: 0 auto 12px;
+  animation: spin 0.75s linear infinite;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-.loader-text {
-  font-size: 14px;
-  color: var(--gray-700);
-}
+.loader-text { font-size: 13px; color: var(--ink-faint); font-weight: 500; }
 
+/* RESULTS */
 .results {
   display: none;
   margin-top: 32px;
   padding-top: 32px;
-  border-top: 2px solid var(--gray-100);
+  border-top: 2px solid var(--border);
 }
 
 .score-card {
   text-align: center;
-  padding: 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  border-radius: 14px;
   color: white;
   margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(124,58,237,0.25);
 }
 
 .score-label {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   opacity: 0.9;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .score-value {
-  font-size: 56px;
+  font-size: 72px;
   font-weight: 700;
   line-height: 1;
+  font-family: 'DM Serif Display', serif;
 }
 
 .score-verdict {
-  margin-top: 12px;
-  font-size: 16px;
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 600;
   opacity: 0.95;
 }
 
-.feedback-section {
-  margin-bottom: 24px;
-}
+.feedback-section { margin-bottom: 20px; }
 
 .feedback-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--gray-900);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
   margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .feedback-content {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 14px 16px;
   font-size: 14px;
-  color: var(--gray-700);
+  color: var(--ink-soft);
   line-height: 1.7;
   white-space: pre-wrap;
 }
 
 .highlight-box {
-  background: #fef3c7;
-  border-left: 4px solid var(--warning);
-  padding: 14px 16px;
-  border-radius: 8px;
-  margin: 16px 0;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 4px solid var(--warn);
+  padding: 16px 18px;
+  border-radius: 10px;
+  margin: 20px 0;
 }
 
 .highlight-box strong {
-  color: var(--gray-900);
+  color: #92400e;
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  font-size: 15px;
 }
 
-.error-box {
-  background: #fee2e2;
-  border: 1px solid #fecaca;
-  border-radius: 8px;
-  padding: 14px 16px;
-  color: #991b1b;
-  margin-top: 20px;
+.highlight-box span {
+  color: #78350f;
   font-size: 14px;
+  line-height: 1.6;
 }
 
 .accordion {
   margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .accordion-header {
-  background: var(--gray-100);
-  padding: 12px 16px;
-  border-radius: 8px;
+  background: var(--surface);
+  padding: 14px 16px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background 0.2s;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
-.accordion-header:hover {
-  background: var(--gray-200);
-}
+.accordion-header:hover { background: var(--bg); }
 
 .accordion-body {
   display: none;
   padding: 16px;
-  background: white;
-  border: 1px solid var(--gray-200);
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  margin-top: -8px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
 }
 
-.accordion-body.open {
-  display: block;
+.accordion-body.open { display: block; }
+
+.error-box {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: var(--danger);
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+/* CONTACT FLOAT */
+.contact-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.5);
+}
+
+.contact-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.contact-email {
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: white;
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.2s;
+}
+
+.contact-email:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* FOOTER */
+.site-footer {
+  text-align: center;
+  padding: 32px 24px 0;
+  font-size: 12px;
+  color: var(--ink-faint);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.site-footer a { color: var(--ink-faint); text-decoration: none; }
+.site-footer a:hover { color: var(--ink-soft); }
+
+/* RESPONSIVE */
+@media (max-width: 540px) {
+  .hero h1 { font-size: 28px; }
+  .card { padding: 20px 16px; }
+  .header-badge { display: none; }
+  .score-value { font-size: 56px; }
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <h1>🎯 PrepAI</h1>
-    <p>AI Interview Coach - Get feedback like a real interviewer</p>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">PrepAI<sup>™</sup></div>
+  <div class="header-badge">⚡ AI-Powered</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Interview Success Platform</div>
+  <h1>Stop sounding <span class="gradient">memorized.</span><br>Start sounding <span class="gradient">hired.</span></h1>
+  <p>AI evaluates your interview answers like a real interviewer. Get brutal feedback on what you're doing wrong before companies reject you.</p>
+
+  <div class="fear-box">
+    <div class="fear-title">
+      <span>⚠️</span>
+      <span>90% of students give technically correct answers and still get rejected.</span>
+    </div>
+    <div class="fear-text">
+      Companies don't hire people who memorize. They hire people who can EXPLAIN their thinking clearly. 
+      PrepAI shows you the difference between a 35/100 answer (rejected) and a 90/100 answer (hired).
+    </div>
+  </div>
+
+  <a href="#review-form" class="btn-hero">
+    Try It Free — No Signup Required ↓
+  </a>
+
+  <div class="trust-row">
+    <div class="trust-pill">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      Instant Feedback
+    </div>
+    <div class="trust-pill">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Interview-Level Scoring
+    </div>
+    <div class="trust-pill">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      No Data Stored
+    </div>
+  </div>
+</div>
+
+<!-- MAIN FORM CARD -->
+<div class="card" id="review-form">
+
+  <div class="field">
+    <label>Your Email (Optional)</label>
+    <input type="email" id="email" placeholder="student@example.com" autocomplete="email">
+    <div class="field-hint">We don't store your data. Email is only for tracking your practice sessions.</div>
   </div>
 
   <div class="field">
-    <label>📧 Email (Optional)</label>
-    <input type="email" id="email" placeholder="your.email@example.com">
+    <label>Interview Question</label>
+    <textarea id="question" placeholder="e.g., Explain the difference between stack and queue&#10;or: What is polymorphism?&#10;or: Explain how HTTP works"></textarea>
   </div>
 
   <div class="field">
-    <label>❓ Interview Question</label>
-    <textarea id="question" placeholder="e.g., Explain the difference between stack and queue"></textarea>
-  </div>
-
-  <div class="field">
-    <label>💬 Your Answer</label>
-    <textarea id="answer" placeholder="Write how you would answer this in an interview..."></textarea>
+    <label>Your Answer</label>
+    <textarea id="answer" placeholder="Write exactly how you would answer this in a real interview..."></textarea>
   </div>
 
   <div class="button-row">
     <button class="btn btn-primary" onclick="evaluateAnswer()">
-      <span>🚀 Evaluate My Answer</span>
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Evaluate My Answer
     </button>
     <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
   </div>
 
   <div class="loader" id="loader">
     <div class="spinner"></div>
-    <div class="loader-text">Analyzing your answer...</div>
+    <div class="loader-text">Analyzing your answer like a real interviewer...</div>
   </div>
 
   <div class="error-box" id="error" style="display:none"></div>
@@ -330,23 +613,17 @@ body {
     </div>
 
     <div class="feedback-section">
-      <div class="feedback-title">
-        <span>✅</span>
-        <span>What You Did Well</span>
-      </div>
+      <div class="feedback-title">✅ What You Did Well</div>
       <div class="feedback-content" id="didWell"></div>
     </div>
 
     <div class="feedback-section">
-      <div class="feedback-title">
-        <span>⚠️</span>
-        <span>Critical Gaps</span>
-      </div>
+      <div class="feedback-title">⚠️ Critical Gaps</div>
       <div class="feedback-content" id="gaps"></div>
     </div>
 
     <div class="highlight-box">
-      <strong>🎯 Priority Fix:</strong>
+      <strong>🎯 Fix This First:</strong>
       <span id="priority"></span>
     </div>
 
@@ -382,22 +659,40 @@ body {
       <div class="accordion-body" id="redflags"></div>
     </div>
 
-    <div class="feedback-section" style="margin-top: 24px;">
-      <div class="feedback-title">
-        <span>⭐</span>
-        <span>Ideal Answer (How Strong Candidates Respond)</span>
-      </div>
+    <div class="divider"></div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">⭐ Ideal Answer (How Strong Candidates Respond)</div>
       <div class="feedback-content" id="ideal"></div>
     </div>
 
     <div class="feedback-section">
-      <div class="feedback-title">
-        <span>🎤</span>
-        <span>Interviewer's Verdict</span>
-      </div>
+      <div class="feedback-title">🎤 Interviewer's Verdict</div>
       <div class="feedback-content" id="verdict"></div>
     </div>
   </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>PrepAI™ is an AI-powered interview coach. It does not replace practice or guarantee placement outcomes.</p>
+  <p style="margin-top: 8px;">
+    <a href="mailto:doctoraqua99@gmail.com">Privacy</a> &nbsp;·&nbsp;
+    <a href="mailto:doctoraqua99@gmail.com">Terms</a> &nbsp;·&nbsp;
+    <a href="mailto:doctoraqua99@gmail.com">Contact</a>
+  </p>
+</footer>
+
+<!-- FLOATING CONTACT -->
+<div class="contact-float">
+  <a href="mailto:doctoraqua99@gmail.com?subject=PrepAI Enquiry" class="contact-btn">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+    </svg>
+    Get in Touch
+  </a>
+  <a href="mailto:doctoraqua99@gmail.com" class="contact-email">doctoraqua99@gmail.com</a>
 </div>
 
 <script>
@@ -419,7 +714,7 @@ async function evaluateAnswer() {
     return;
   }
 
-  loader.style.display = 'block';
+  loader.style.display = 'flex';
 
   try {
     const res = await fetch('/analyze', {
@@ -441,7 +736,7 @@ async function evaluateAnswer() {
 
   } catch (e) {
     loader.style.display = 'none';
-    error.textContent = '❌ Could not connect to server. Check connection and try again.';
+    error.textContent = '❌ Could not connect to server. Check your connection and try again.';
     error.style.display = 'block';
     console.error('Error:', e);
   }
@@ -470,11 +765,11 @@ function displayResults(data) {
 }
 
 function getScoreLabel(score) {
-  if (score >= 86) return '🌟 Strong Hire - Excellent!';
-  if (score >= 71) return '✅ Hire - Good answer';
-  if (score >= 51) return '⚠️ Borderline - Needs improvement';
-  if (score >= 31) return '❌ Weak - Significant gaps';
-  return '🚫 Reject - Fundamental issues';
+  if (score >= 86) return '🌟 Strong Hire — Excellent Answer!';
+  if (score >= 71) return '✅ Hire — Good Answer';
+  if (score >= 51) return '⚠️ Borderline — Needs Work';
+  if (score >= 31) return '❌ Weak — Significant Gaps';
+  return '🚫 Reject — Fundamental Issues';
 }
 
 function toggleAccordion(id) {
