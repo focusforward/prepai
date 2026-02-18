@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrepAI™ — Interview Practice Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #0f172a;
+  --ink-soft:  #475569;
+  --ink-faint: #94a3b8;
+  --bg:        #f8fafc;
+  --surface:   #ffffff;
+  --border:    #e2e8f0;
+  --accent:    #7c3aed;
+  --accent-dk: #6d28d9;
+  --success:   #10b981;
+  --warn:      #f59e0b;
+  --danger:    #ef4444;
+  --radius:    14px;
+  --shadow:    0 4px 24px rgba(124,58,237,0.12);
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 0 0 80px;
+}
+
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo sup { font-size: 11px; }
+
+.header-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border: 1px solid var(--accent);
+  background: rgba(124,58,237,0.05);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 52px 24px 36px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.hero h1 .gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0 auto 28px;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 28px auto;
+  max-width: 500px;
+  background: var(--surface);
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--ink-soft);
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.3);
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  padding: 28px;
+  max-width: 720px;
+  margin: 0 auto 20px;
+}
+
+.mode-content {
+  display: none;
+}
+
+.mode-content.active {
+  display: block;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 7px;
+}
+
+.field select,
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.field select:focus,
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+  background: white;
+}
+
+.field textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.btn {
+  padding: 14px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  color: white;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.4);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background: rgba(124,58,237,0.05);
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.question-card {
+  background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, rgba(236,72,153,0.05) 100%);
+  border: 1.5px solid var(--accent);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.question-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.meta-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.question-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.hint-box {
+  background: #fef3c7;
+  border-left: 4px solid var(--warn);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #78350f;
+}
+
+.loader {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loader-text {
+  font-size: 13px;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.error-box {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: var(--danger);
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.results {
+  display: none;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 2px solid var(--border);
+}
+
+.score-card {
+  text-align: center;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  border-radius: 14px;
+  color: white;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(124,58,237,0.25);
+}
+
+.score-value {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  font-family: 'DM Serif Display', serif;
+}
+
+.score-verdict {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.feedback-section {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.feedback-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+
+.feedback-content {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.contact-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  color: white;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.4);
+  transition: all 0.2s;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.5);
+}
+
+.contact-email {
+  font-size: 11px;
+  color: var(--ink-soft);
+  background: white;
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.contact-email:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 28px; }
+  .card { padding: 20px 16px; }
+  .header-badge { display: none; }
+  .mode-toggle { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">PrepAI<sup>™</sup></div>
+  <div class="header-badge">⚡ 1400+ Topics</div>
+</header>
+
+<div class="hero">
+  <h1>Master <span class="gradient">every topic</span> from your syllabus</h1>
+  <p>Practice with AI-generated interview questions from your actual engineering curriculum. Get instant feedback on every answer.</p>
+  
+  <div class="mode-toggle">
+    <button class="mode-btn active" onclick="switchMode('practice')">
+      📚 Practice Mode
+      <div style="font-size:10px;opacity:0.8;margin-top:2px">Syllabus-based</div>
+    </button>
+    <button class="mode-btn" onclick="switchMode('custom')">
+      ✍️ Custom Mode
+      <div style="font-size:10px;opacity:0.8;margin-top:2px">Any question</div>
+    </button>
+  </div>
+</div>
+
+<!-- PRACTICE MODE -->
+<div class="card mode-content active" id="practiceMode">
+  <div class="field">
+    <label>Select Your Branch</label>
+    <select id="branchSelect">
+      <option value="">Loading branches...</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Select Semester</label>
+    <select id="semesterSelect">
+      <option value="">First select your branch</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary btn-block" onclick="generateQuestion()">
+    🎯 Generate Question
+  </button>
+
+  <div class="loader" id="practiceLoader">
+    <div class="spinner"></div>
+    <div class="loader-text">Generating question from your syllabus...</div>
+  </div>
+
+  <div class="error-box" id="practiceError" style="display:none"></div>
+
+  <div id="questionSection" style="display:none;margin-top:24px">
+    <div class="question-card">
+      <div class="question-meta">
+        <span class="meta-tag" id="questionBranch"></span>
+        <span class="meta-tag" id="questionSemester"></span>
+        <span class="meta-tag" id="questionSubject"></span>
+      </div>
+      <div style="font-size:11px;font-weight:600;color:var(--ink-faint);margin-bottom:6px">TOPIC:</div>
+      <div style="font-size:14px;color:var(--ink-soft);margin-bottom:12px" id="questionTopic"></div>
+      <div style="font-size:11px;font-weight:600;color:var(--ink-faint);margin-bottom:6px">QUESTION:</div>
+      <div class="question-text" id="questionText"></div>
+      <div class="hint-box" id="questionHint" style="display:none"></div>
+    </div>
+
+    <div class="field">
+      <label>Your Answer</label>
+      <textarea id="practiceAnswer" placeholder="Type your answer here..."></textarea>
+    </div>
+
+    <div class="button-row">
+      <button class="btn btn-primary" style="flex:1" onclick="submitPracticeAnswer()">
+        ✅ Submit Answer
+      </button>
+      <button class="btn btn-secondary" onclick="generateQuestion()">
+        Next Question
+      </button>
+    </div>
+  </div>
+
+  <div class="loader" id="practiceEvalLoader">
+    <div class="spinner"></div>
+    <div class="loader-text">Evaluating your answer...</div>
+  </div>
+
+  <div class="results" id="practiceResults">
+    <div class="score-card">
+      <div class="score-value" id="practiceScore">--</div>
+      <div class="score-verdict" id="practiceVerdict"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">✅ What You Got Right</div>
+      <div class="feedback-content" id="practiceGood"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">⚠️ What You Missed</div>
+      <div class="feedback-content" id="practiceMissed"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">💡 How To Improve</div>
+      <div class="feedback-content" id="practiceImprove"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">⭐ Ideal Answer</div>
+      <div class="feedback-content" id="practiceIdeal"></div>
+    </div>
+
+    <button class="btn btn-primary btn-block" onclick="generateQuestion()">
+      🔄 Practice Next Topic
+    </button>
+  </div>
+</div>
+
+<!-- CUSTOM MODE -->
+<div class="card mode-content" id="customMode">
+  <div class="field">
+    <label>Interview Question</label>
+    <textarea id="customQuestion" placeholder="e.g., Explain the difference between stack and queue"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Your Answer</label>
+    <textarea id="customAnswer" placeholder="Write how you would answer this in an interview..."></textarea>
+  </div>
+
+  <button class="btn btn-primary btn-block" onclick="submitCustomAnswer()">
+    📊 Evaluate My Answer
+  </button>
+
+  <div class="loader" id="customLoader">
+    <div class="spinner"></div>
+    <div class="loader-text">Analyzing like a real interviewer...</div>
+  </div>
+
+  <div class="error-box" id="customError" style="display:none"></div>
+
+  <div class="results" id="customResults">
+    <div class="score-card">
+      <div class="score-value" id="customScore">--</div>
+      <div class="score-verdict">Interview Score</div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">✅ Strengths</div>
+      <div class="feedback-content" id="customStrengths"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">❌ Gaps</div>
+      <div class="feedback-content" id="customGaps"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">🎯 Priority Fix</div>
+      <div class="feedback-content" id="customPriority"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">⭐ Ideal Answer</div>
+      <div class="feedback-content" id="customIdeal"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">🎤 Interviewer Verdict</div>
+      <div class="feedback-content" id="customVerdict"></div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-float">
+  <a href="mailto:doctoraqua99@gmail.com?subject=PrepAI Enquiry" class="contact-btn">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+    </svg>
+    Get in Touch
+  </a>
+  <a href="mailto:doctoraqua99@gmail.com" class="contact-email">doctoraqua99@gmail.com</a>
+</div>
+
+<script>
+let currentMode = 'practice';
+let currentQuestion = null;
+
+// Load branches on page load
+window.onload = async function() {
+  try {
+    const res = await fetch('/get-branches');
+    const data = await res.json();
+    
+    if (data.error) {
+      document.getElementById('branchSelect').innerHTML = '<option>Error loading branches</option>';
+      return;
+    }
+    
+    const select = document.getElementById('branchSelect');
+    select.innerHTML = '<option value="">Choose your branch...</option>';
+    data.branches.forEach(branch => {
+      const option = document.createElement('option');
+      option.value = branch;
+      option.textContent = branch;
+      select.appendChild(option);
+    });
+    
+    // Load semesters
+    document.getElementById('branchSelect').addEventListener('change', async function() {
+      if (this.value) {
+        const semSelect = document.getElementById('semesterSelect');
+        semSelect.innerHTML = '';
+        for (let i = 1; i <= 8; i++) {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = `Semester ${i}`;
+          semSelect.appendChild(opt);
+        }
+      }
+    });
+    
+  } catch (e) {
+    console.error('Failed to load branches:', e);
+  }
+};
+
+function switchMode(mode) {
+  currentMode = mode;
+  
+  // Update buttons
+  document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  event.target.closest('.mode-btn').classList.add('active');
+  
+  // Update content
+  document.querySelectorAll('.mode-content').forEach(content => {
+    content.classList.remove('active');
+  });
+  document.getElementById(mode + 'Mode').classList.add('active');
+}
+
+async function generateQuestion() {
+  const branch = document.getElementById('branchSelect').value;
+  const semester = document.getElementById('semesterSelect').value;
+  
+  const loader = document.getElementById('practiceLoader');
+  const error = document.getElementById('practiceError');
+  const questionSection = document.getElementById('questionSection');
+  const results = document.getElementById('practiceResults');
+  
+  error.style.display = 'none';
+  questionSection.style.display = 'none';
+  results.style.display = 'none';
+  
+  if (!branch || !semester) {
+    error.textContent = 'Please select both branch and semester';
+    error.style.display = 'block';
+    return;
+  }
+  
+  loader.style.display = 'flex';
+  
+  try {
+    const res = await fetch('/generate-question', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({branch, semester})
+    });
+    
+    const data = await res.json();
+    loader.style.display = 'none';
+    
+    if (data.error) {
+      error.textContent = data.error;
+      error.style.display = 'block';
+      return;
+    }
+    
+    currentQuestion = data;
+    
+    document.getElementById('questionBranch').textContent = data.branch;
+    document.getElementById('questionSemester').textContent = `Sem ${data.semester}`;
+    document.getElementById('questionSubject').textContent = data.subject;
+    document.getElementById('questionTopic').textContent = data.topic;
+    document.getElementById('questionText').textContent = data.question;
+    
+    const hintBox = document.getElementById('questionHint');
+    if (data.hint) {
+      hintBox.textContent = '💡 Hint: ' + data.hint;
+      hintBox.style.display = 'block';
+    } else {
+      hintBox.style.display = 'none';
+    }
+    
+    document.getElementById('practiceAnswer').value = '';
+    questionSection.style.display = 'block';
+    
+  } catch (e) {
+    loader.style.display = 'none';
+    error.textContent = 'Failed to generate question. Try again.';
+    error.style.display = 'block';
+  }
+}
+
+async function submitPracticeAnswer() {
+  const answer = document.getElementById('practiceAnswer').value.trim();
+  
+  if (!answer) {
+    alert('Please write your answer first');
+    return;
+  }
+  
+  if (!currentQuestion) {
+    alert('No question loaded');
+    return;
+  }
+  
+  const loader = document.getElementById('practiceEvalLoader');
+  const results = document.getElementById('practiceResults');
+  
+  results.style.display = 'none';
+  loader.style.display = 'flex';
+  
+  try {
+    const res = await fetch('/analyze-practice', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        question: currentQuestion.question,
+        answer: answer,
+        topic: currentQuestion.topic
+      })
+    });
+    
+    const data = await res.json();
+    loader.style.display = 'none';
+    
+    if (data.error) {
+      alert('Error: ' + data.error);
+      return;
+    }
+    
+    const score = data.score_out_of_10 || Math.round(data.overall_score / 10);
+    document.getElementById('practiceScore').textContent = score + '/10';
+    document.getElementById('practiceVerdict').textContent = getScoreLabelSimple(score);
+    
+    document.getElementById('practiceGood').textContent = data.what_you_got_right || 'N/A';
+    document.getElementById('practiceMissed').textContent = data.what_you_missed || 'N/A';
+    document.getElementById('practiceImprove').textContent = data.how_to_improve || 'N/A';
+    document.getElementById('practiceIdeal').textContent = data.ideal_answer || 'N/A';
+    
+    results.style.display = 'block';
+    results.scrollIntoView({behavior: 'smooth', block: 'start'});
+    
+  } catch (e) {
+    loader.style.display = 'none';
+    alert('Failed to evaluate. Try again.');
+  }
+}
+
+async function submitCustomAnswer() {
+  const question = document.getElementById('customQuestion').value.trim();
+  const answer = document.getElementById('customAnswer').value.trim();
+  
+  const loader = document.getElementById('customLoader');
+  const error = document.getElementById('customError');
+  const results = document.getElementById('customResults');
+  
+  error.style.display = 'none';
+  results.style.display = 'none';
+  
+  if (!question || !answer) {
+    error.textContent = 'Please provide both question and answer';
+    error.style.display = 'block';
+    return;
+  }
+  
+  loader.style.display = 'flex';
+  
+  try {
+    const res = await fetch('/analyze-custom', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({question, answer})
+    });
+    
+    const data = await res.json();
+    loader.style.display = 'none';
+    
+    if (data.error) {
+      error.textContent = data.error;
+      error.style.display = 'block';
+      return;
+    }
+    
+    const score = data.score_out_of_10 || Math.round(data.overall_score / 10);
+    document.getElementById('customScore').textContent = score + '/10';
+    
+    document.getElementById('customStrengths').textContent = data.what_you_did_well || 'N/A';
+    document.getElementById('customGaps').textContent = data.critical_gaps || 'N/A';
+    document.getElementById('customPriority').textContent = data.improvement_priority || 'N/A';
+    document.getElementById('customIdeal').textContent = data.ideal_answer || 'N/A';
+    document.getElementById('customVerdict').textContent = data.interviewer_verdict || 'N/A';
+    
+    results.style.display = 'block';
+    results.scrollIntoView({behavior: 'smooth', block: 'start'});
+    
+  } catch (e) {
+    loader.style.display = 'none';
+    error.textContent = 'Failed to evaluate. Try again.';
+    error.style.display = 'block';
+  }
+}
+
+function getScoreLabelSimple(score) {
+  if (score >= 9) return '🌟 Excellent';
+  if (score >= 7) return '✅ Good';
+  if (score >= 5) return '⚠️ Average';
+  if (score >= 3) return '❌ Weak';
+  return '🚫 Poor';
+}
+</script>
+
+</body>
+</html>
