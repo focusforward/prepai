@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrepAI - Interview Answer Evaluator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-700: #374151;
+  --gray-900: #111827;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 32px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--gray-100);
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 16px;
+  color: var(--gray-700);
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 8px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.field textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--gray-300);
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  flex: 1;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.btn-secondary:hover {
+  background: var(--gray-200);
+}
+
+.loader {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-200);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loader-text {
+  font-size: 14px;
+  color: var(--gray-700);
+}
+
+.results {
+  display: none;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 2px solid var(--gray-100);
+}
+
+.score-card {
+  text-align: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.score-label {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.score-value {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.score-verdict {
+  margin-top: 12px;
+  font-size: 16px;
+  opacity: 0.95;
+}
+
+.feedback-section {
+  margin-bottom: 24px;
+}
+
+.feedback-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-content {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.highlight-box {
+  background: #fef3c7;
+  border-left: 4px solid var(--warning);
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.highlight-box strong {
+  color: var(--gray-900);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.error-box {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: #991b1b;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.accordion {
+  margin-top: 12px;
+}
+
+.accordion-header {
+  background: var(--gray-100);
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.accordion-header:hover {
+  background: var(--gray-200);
+}
+
+.accordion-body {
+  display: none;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  margin-top: -8px;
+}
+
+.accordion-body.open {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>🎯 PrepAI</h1>
+    <p>AI Interview Coach - Get feedback like a real interviewer</p>
+  </div>
+
+  <div class="field">
+    <label>📧 Email (Optional)</label>
+    <input type="email" id="email" placeholder="your.email@example.com">
+  </div>
+
+  <div class="field">
+    <label>❓ Interview Question</label>
+    <textarea id="question" placeholder="e.g., Explain the difference between stack and queue"></textarea>
+  </div>
+
+  <div class="field">
+    <label>💬 Your Answer</label>
+    <textarea id="answer" placeholder="Write how you would answer this in an interview..."></textarea>
+  </div>
+
+  <div class="button-row">
+    <button class="btn btn-primary" onclick="evaluateAnswer()">
+      <span>🚀 Evaluate My Answer</span>
+    </button>
+    <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <div class="loader-text">Analyzing your answer...</div>
+  </div>
+
+  <div class="error-box" id="error" style="display:none"></div>
+
+  <div class="results" id="results">
+    <div class="score-card">
+      <div class="score-label">Your Interview Score</div>
+      <div class="score-value" id="scoreValue">--</div>
+      <div class="score-verdict" id="scoreVerdict"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">
+        <span>✅</span>
+        <span>What You Did Well</span>
+      </div>
+      <div class="feedback-content" id="didWell"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">
+        <span>⚠️</span>
+        <span>Critical Gaps</span>
+      </div>
+      <div class="feedback-content" id="gaps"></div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>🎯 Priority Fix:</strong>
+      <span id="priority"></span>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('technical')">
+        <span>📊 Technical Accuracy</span>
+        <span>▼</span>
+      </div>
+      <div class="accordion-body" id="technical"></div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('communication')">
+        <span>💬 Communication Clarity</span>
+        <span>▼</span>
+      </div>
+      <div class="accordion-body" id="communication"></div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('depth')">
+        <span>🧠 Depth of Understanding</span>
+        <span>▼</span>
+      </div>
+      <div class="accordion-body" id="depth"></div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('redflags')">
+        <span>🚩 Interview Red Flags</span>
+        <span>▼</span>
+      </div>
+      <div class="accordion-body" id="redflags"></div>
+    </div>
+
+    <div class="feedback-section" style="margin-top: 24px;">
+      <div class="feedback-title">
+        <span>⭐</span>
+        <span>Ideal Answer (How Strong Candidates Respond)</span>
+      </div>
+      <div class="feedback-content" id="ideal"></div>
+    </div>
+
+    <div class="feedback-section">
+      <div class="feedback-title">
+        <span>🎤</span>
+        <span>Interviewer's Verdict</span>
+      </div>
+      <div class="feedback-content" id="verdict"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+async function evaluateAnswer() {
+  const question = document.getElementById('question').value.trim();
+  const answer = document.getElementById('answer').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  const loader = document.getElementById('loader');
+  const results = document.getElementById('results');
+  const error = document.getElementById('error');
+
+  results.style.display = 'none';
+  error.style.display = 'none';
+
+  if (!question || !answer) {
+    error.textContent = 'Please provide both a question and your answer.';
+    error.style.display = 'block';
+    return;
+  }
+
+  loader.style.display = 'block';
+
+  try {
+    const res = await fetch('/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, question, answer })
+    });
+
+    const data = await res.json();
+    loader.style.display = 'none';
+
+    if (data.error) {
+      error.textContent = '❌ ' + data.error;
+      error.style.display = 'block';
+      return;
+    }
+
+    displayResults(data);
+
+  } catch (e) {
+    loader.style.display = 'none';
+    error.textContent = '❌ Could not connect to server. Check connection and try again.';
+    error.style.display = 'block';
+    console.error('Error:', e);
+  }
+}
+
+function displayResults(data) {
+  const score = data.overall_score || 0;
+  
+  document.getElementById('scoreValue').textContent = score;
+  document.getElementById('scoreVerdict').textContent = getScoreLabel(score);
+  
+  document.getElementById('didWell').textContent = data.what_you_did_well || 'N/A';
+  document.getElementById('gaps').textContent = data.critical_gaps || 'N/A';
+  document.getElementById('priority').textContent = data.improvement_priority || 'N/A';
+  
+  document.getElementById('technical').textContent = data.technical_accuracy || 'N/A';
+  document.getElementById('communication').textContent = data.communication_clarity || 'N/A';
+  document.getElementById('depth').textContent = data.depth_understanding || 'N/A';
+  document.getElementById('redflags').textContent = data.red_flags || 'None';
+  
+  document.getElementById('ideal').textContent = data.ideal_answer || 'N/A';
+  document.getElementById('verdict').textContent = data.interviewer_verdict || 'N/A';
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function getScoreLabel(score) {
+  if (score >= 86) return '🌟 Strong Hire - Excellent!';
+  if (score >= 71) return '✅ Hire - Good answer';
+  if (score >= 51) return '⚠️ Borderline - Needs improvement';
+  if (score >= 31) return '❌ Weak - Significant gaps';
+  return '🚫 Reject - Fundamental issues';
+}
+
+function toggleAccordion(id) {
+  const body = document.getElementById(id);
+  body.classList.toggle('open');
+}
+
+function clearForm() {
+  document.getElementById('question').value = '';
+  document.getElementById('answer').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('error').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
