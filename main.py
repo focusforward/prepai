@@ -75,7 +75,12 @@ Why: Uses analogies, connects to real algorithms, shows understanding.
 NOW EVALUATE THE STUDENT'S ANSWER BELOW.
 """
 
-# -------------------- ANALYZE ROUTE --------------------
+# -------------------- HEALTH CHECK (MUST BE BEFORE STATIC FILES) --------------------
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+# -------------------- ANALYZE ROUTE (MUST BE BEFORE STATIC FILES) --------------------
 @app.post("/analyze")
 async def analyze_answer(request: Request):
     try:
@@ -98,7 +103,7 @@ Student's Answer: {answer}
         
         # Call OpenAI
         response = client.chat.completions.create(
-            model="gpt-4o-mini",  # Faster and cheaper than gpt-4.1-mini
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_input}
@@ -124,17 +129,6 @@ Student's Answer: {answer}
             "error": f"Server error: {str(e)}"
         }
 
-# -------------------- HEALTH CHECK --------------------
-@app.get("/health")
-def health():
-    return {"status": "ok"}
-
-# -------------------- SERVE FRONTEND --------------------
+# -------------------- SERVE STATIC FILES (MUST BE LAST!) --------------------
 BASE_DIR = Path(__file__).resolve().parent
-
-@app.get("/")
-def home():
-    return FileResponse(BASE_DIR / "index.html")
-
-# Serve static files last (important!)
 app.mount("/", StaticFiles(directory=BASE_DIR, html=True), name="static")
