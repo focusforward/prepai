@@ -100,7 +100,7 @@ body {
   gap: 12px;
   justify-content: center;
   margin: 28px auto;
-  max-width: 500px;
+  max-width: 560px;
   background: var(--surface);
   padding: 6px;
   border-radius: 12px;
@@ -109,7 +109,7 @@ body {
 
 .mode-btn {
   flex: 1;
-  padding: 12px 20px;
+  padding: 12px 16px;
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -185,6 +185,12 @@ body {
   min-height: 120px;
   resize: vertical;
   line-height: 1.6;
+}
+
+.field-hint {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 4px;
 }
 
 .btn {
@@ -277,6 +283,30 @@ body {
   color: #78350f;
 }
 
+.diagram-section {
+  display: none;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--bg);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.diagram-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-faint);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.diagram-section img {
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
 .loader {
   display: none;
   flex-direction: column;
@@ -366,6 +396,44 @@ body {
   white-space: pre-wrap;
 }
 
+/* Aptitude answer options */
+.apt-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.apt-option:hover {
+  border-color: var(--accent);
+  background: rgba(124,58,237,0.04);
+}
+
+.apt-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.apt-option.correct {
+  border-color: var(--success);
+  background: #d1fae5;
+}
+
+.apt-option.incorrect {
+  border-color: var(--danger);
+  background: #fee2e2;
+}
+
 .contact-float {
   position: fixed;
   bottom: 24px;
@@ -431,20 +499,24 @@ body {
 <div class="hero">
   <h1>Master <span class="gradient">every topic</span> from your syllabus</h1>
   <p>Practice with AI-generated interview questions from your actual engineering curriculum. Get instant feedback on every answer.</p>
-  
+
   <div class="mode-toggle">
-    <button class="mode-btn active" onclick="switchMode('practice')">
-      📚 Practice Mode
+    <button class="mode-btn active" onclick="switchMode('practice', this)">
+      📚 Practice
       <div style="font-size:10px;opacity:0.8;margin-top:2px">Syllabus-based</div>
     </button>
-    <button class="mode-btn" onclick="switchMode('custom')">
-      ✍️ Custom Mode
+    <button class="mode-btn" onclick="switchMode('aptitude', this)">
+      🧮 Aptitude
+      <div style="font-size:10px;opacity:0.8;margin-top:2px">Placement tests</div>
+    </button>
+    <button class="mode-btn" onclick="switchMode('custom', this)">
+      ✍️ Custom
       <div style="font-size:10px;opacity:0.8;margin-top:2px">Any question</div>
     </button>
   </div>
 </div>
 
-<!-- PRACTICE MODE -->
+<!-- ═══════════════ PRACTICE MODE ═══════════════ -->
 <div class="card mode-content active" id="practiceMode">
   <div class="field">
     <label>Select Your Branch</label>
@@ -458,6 +530,15 @@ body {
     <select id="semesterSelect">
       <option value="">First select your branch</option>
     </select>
+  </div>
+
+  <!-- Topic selection (shown after branch + semester selected) -->
+  <div class="field" id="topicField" style="display:none">
+    <label>Select Topic <span style="font-size:10px;font-weight:400;text-transform:none;color:var(--ink-faint)">(optional)</span></label>
+    <select id="topicSelect">
+      <option value="">Loading topics...</option>
+    </select>
+    <div class="field-hint">Leave empty to get a random topic from this semester</div>
   </div>
 
   <button class="btn btn-primary btn-block" onclick="generateQuestion()">
@@ -483,6 +564,12 @@ body {
       <div style="font-size:11px;font-weight:600;color:var(--ink-faint);margin-bottom:6px">QUESTION:</div>
       <div class="question-text" id="questionText"></div>
       <div class="hint-box" id="questionHint" style="display:none"></div>
+
+      <!-- Diagram section (shown only when diagram is available) -->
+      <div class="diagram-section" id="diagramSection">
+        <div class="diagram-label">📊 Reference Diagram</div>
+        <img id="questionDiagram" alt="Topic diagram" />
+      </div>
     </div>
 
     <div class="field">
@@ -537,7 +624,71 @@ body {
   </div>
 </div>
 
-<!-- CUSTOM MODE -->
+<!-- ═══════════════ APTITUDE MODE ═══════════════ -->
+<div class="card mode-content" id="aptitudeMode">
+  <div class="field">
+    <label>Aptitude Category</label>
+    <select id="aptCategory">
+      <option value="">All Categories (Random)</option>
+    </select>
+    <div class="field-hint">Leave on "All Categories" for mixed practice</div>
+  </div>
+
+  <button class="btn btn-primary btn-block" onclick="generateAptitude()">
+    🎲 Get Question
+  </button>
+
+  <div class="loader" id="aptLoader">
+    <div class="spinner"></div>
+    <div class="loader-text">Loading question...</div>
+  </div>
+
+  <div class="error-box" id="aptError" style="display:none"></div>
+
+  <div id="aptQuestionSection" style="display:none;margin-top:24px">
+    <div class="question-card">
+      <div class="question-meta">
+        <span class="meta-tag" id="aptCatTag"></span>
+        <span class="meta-tag" id="aptSubcatTag"></span>
+      </div>
+      <div class="question-text" id="aptQuestionText"></div>
+
+      <div style="margin-top:18px">
+        <label class="apt-option" id="optLabelA">
+          <input type="radio" name="aptAnswer" value="a">
+          <span id="optA"></span>
+        </label>
+        <label class="apt-option" id="optLabelB">
+          <input type="radio" name="aptAnswer" value="b">
+          <span id="optB"></span>
+        </label>
+        <label class="apt-option" id="optLabelC">
+          <input type="radio" name="aptAnswer" value="c">
+          <span id="optC"></span>
+        </label>
+        <label class="apt-option" id="optLabelD">
+          <input type="radio" name="aptAnswer" value="d">
+          <span id="optD"></span>
+        </label>
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="checkAptitude()" id="aptSubmitBtn" style="margin-top:4px">
+        ✅ Submit Answer
+      </button>
+    </div>
+
+    <div id="aptResult" style="display:none;margin-top:16px">
+      <div class="feedback-section" id="aptResultBox"></div>
+      <div class="feedback-section">
+        <div class="feedback-title">💡 Explanation</div>
+        <div class="feedback-content" id="aptExplanation"></div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="generateAptitude()">Next Question →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CUSTOM MODE ═══════════════ -->
 <div class="card mode-content" id="customMode">
   <div class="field">
     <label>Interview Question</label>
@@ -594,43 +745,51 @@ body {
 </div>
 
 <div class="contact-float">
-  <a href="mailto:doctoraqua99@gmail.com?subject=PrepAI Enquiry" class="contact-btn">
+  <a href="mailto:contact@prepai.com" class="contact-btn">
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px">
       <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
     </svg>
     Get in Touch
   </a>
-  <a href="mailto:doctoraqua99@gmail.com" class="contact-email">doctoraqua99@gmail.com</a>
 </div>
 
 <script>
 let currentMode = 'practice';
 let currentQuestion = null;
+let currentAptQuestion = null;
 
-// Load branches on page load
+// ──────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────
 window.onload = async function() {
+  loadBranches();
+  loadAptitudeCategories();
+};
+
+async function loadBranches() {
   try {
     const res = await fetch('/get-branches');
     const data = await res.json();
-    
+
     if (data.error) {
       document.getElementById('branchSelect').innerHTML = '<option>Error loading branches</option>';
       return;
     }
-    
+
     const select = document.getElementById('branchSelect');
     select.innerHTML = '<option value="">Choose your branch...</option>';
     data.branches.forEach(branch => {
-      const option = document.createElement('option');
-      option.value = branch;
-      option.textContent = branch;
-      select.appendChild(option);
+      const opt = document.createElement('option');
+      opt.value = branch;
+      opt.textContent = branch;
+      select.appendChild(opt);
     });
-    
-    // Load semesters
-    document.getElementById('branchSelect').addEventListener('change', async function() {
+
+    // When branch is selected → populate semesters
+    select.addEventListener('change', function() {
+      const semSelect = document.getElementById('semesterSelect');
+      document.getElementById('topicField').style.display = 'none';
       if (this.value) {
-        const semSelect = document.getElementById('semesterSelect');
         semSelect.innerHTML = '';
         for (let i = 1; i <= 8; i++) {
           const opt = document.createElement('option');
@@ -638,75 +797,146 @@ window.onload = async function() {
           opt.textContent = `Semester ${i}`;
           semSelect.appendChild(opt);
         }
+        // Trigger topic load for default semester
+        loadTopics(this.value, semSelect.value);
+      } else {
+        semSelect.innerHTML = '<option value="">First select your branch</option>';
       }
     });
-    
+
+    // When semester changes → load topics
+    document.getElementById('semesterSelect').addEventListener('change', function() {
+      const branch = document.getElementById('branchSelect').value;
+      if (branch && this.value) {
+        loadTopics(branch, this.value);
+      }
+    });
+
   } catch (e) {
     console.error('Failed to load branches:', e);
   }
-};
+}
 
-function switchMode(mode) {
+async function loadTopics(branch, semester) {
+  const topicField = document.getElementById('topicField');
+  const topicSelect = document.getElementById('topicSelect');
+
+  topicSelect.innerHTML = '<option value="">Loading topics...</option>';
+  topicField.style.display = 'block';
+
+  try {
+    const res = await fetch(`/get-topics?branch=${encodeURIComponent(branch)}&semester=${semester}`);
+    const data = await res.json();
+
+    topicSelect.innerHTML = '<option value="">Random topic from this semester</option>';
+
+    if (data.topics && data.topics.length > 0) {
+      // Group by subject
+      const grouped = {};
+      data.topics.forEach(t => {
+        if (!grouped[t.subject]) grouped[t.subject] = [];
+        grouped[t.subject].push(t.topic);
+      });
+
+      Object.entries(grouped).forEach(([subject, topics]) => {
+        const group = document.createElement('optgroup');
+        group.label = subject;
+        topics.forEach(topic => {
+          const opt = document.createElement('option');
+          opt.value = topic;
+          opt.textContent = topic;
+          group.appendChild(opt);
+        });
+        topicSelect.appendChild(group);
+      });
+    }
+  } catch (e) {
+    topicSelect.innerHTML = '<option value="">Random topic from this semester</option>';
+  }
+}
+
+async function loadAptitudeCategories() {
+  try {
+    const res = await fetch('/get-aptitude-categories');
+    const data = await res.json();
+
+    if (data.error || !data.categories) return;
+
+    const select = document.getElementById('aptCategory');
+    select.innerHTML = '<option value="">All Categories (Random)</option>';
+    data.categories.forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat;
+      select.appendChild(opt);
+    });
+  } catch (e) {
+    console.error('Failed to load aptitude categories:', e);
+  }
+}
+
+// ──────────────────────────────────────────────
+// MODE SWITCH
+// ──────────────────────────────────────────────
+function switchMode(mode, btn) {
   currentMode = mode;
-  
-  // Update buttons
-  document.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.classList.remove('active');
-  });
-  event.target.closest('.mode-btn').classList.add('active');
-  
-  // Update content
-  document.querySelectorAll('.mode-content').forEach(content => {
-    content.classList.remove('active');
-  });
+
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.mode-content').forEach(c => c.classList.remove('active'));
   document.getElementById(mode + 'Mode').classList.add('active');
 }
 
+// ──────────────────────────────────────────────
+// PRACTICE MODE
+// ──────────────────────────────────────────────
 async function generateQuestion() {
   const branch = document.getElementById('branchSelect').value;
   const semester = document.getElementById('semesterSelect').value;
-  
+  const specificTopic = document.getElementById('topicSelect').value;
+
   const loader = document.getElementById('practiceLoader');
   const error = document.getElementById('practiceError');
   const questionSection = document.getElementById('questionSection');
   const results = document.getElementById('practiceResults');
-  
+
   error.style.display = 'none';
   questionSection.style.display = 'none';
   results.style.display = 'none';
-  
+
   if (!branch || !semester) {
     error.textContent = 'Please select both branch and semester';
     error.style.display = 'block';
     return;
   }
-  
+
   loader.style.display = 'flex';
-  
+
   try {
     const res = await fetch('/generate-question', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({branch, semester})
+      body: JSON.stringify({branch, semester, specific_topic: specificTopic || null})
     });
-    
+
     const data = await res.json();
     loader.style.display = 'none';
-    
+
     if (data.error) {
       error.textContent = data.error;
       error.style.display = 'block';
       return;
     }
-    
+
     currentQuestion = data;
-    
+
     document.getElementById('questionBranch').textContent = data.branch;
     document.getElementById('questionSemester').textContent = `Sem ${data.semester}`;
     document.getElementById('questionSubject').textContent = data.subject;
     document.getElementById('questionTopic').textContent = data.topic;
     document.getElementById('questionText').textContent = data.question;
-    
+
     const hintBox = document.getElementById('questionHint');
     if (data.hint) {
       hintBox.textContent = '💡 Hint: ' + data.hint;
@@ -714,10 +944,19 @@ async function generateQuestion() {
     } else {
       hintBox.style.display = 'none';
     }
-    
+
+    // Show diagram if available
+    const diagramSection = document.getElementById('diagramSection');
+    if (data.diagram) {
+      document.getElementById('questionDiagram').src = data.diagram;
+      diagramSection.style.display = 'block';
+    } else {
+      diagramSection.style.display = 'none';
+    }
+
     document.getElementById('practiceAnswer').value = '';
     questionSection.style.display = 'block';
-    
+
   } catch (e) {
     loader.style.display = 'none';
     error.textContent = 'Failed to generate question. Try again.';
@@ -727,23 +966,16 @@ async function generateQuestion() {
 
 async function submitPracticeAnswer() {
   const answer = document.getElementById('practiceAnswer').value.trim();
-  
-  if (!answer) {
-    alert('Please write your answer first');
-    return;
-  }
-  
-  if (!currentQuestion) {
-    alert('No question loaded');
-    return;
-  }
-  
+
+  if (!answer) { alert('Please write your answer first'); return; }
+  if (!currentQuestion) { alert('No question loaded'); return; }
+
   const loader = document.getElementById('practiceEvalLoader');
   const results = document.getElementById('practiceResults');
-  
+
   results.style.display = 'none';
   loader.style.display = 'flex';
-  
+
   try {
     const res = await fetch('/analyze-practice', {
       method: 'POST',
@@ -754,95 +986,206 @@ async function submitPracticeAnswer() {
         topic: currentQuestion.topic
       })
     });
-    
+
     const data = await res.json();
     loader.style.display = 'none';
-    
-    if (data.error) {
-      alert('Error: ' + data.error);
-      return;
-    }
-    
+
+    if (data.error) { alert('Error: ' + data.error); return; }
+
     const score = data.score_out_of_10 || Math.round(data.overall_score / 10);
     document.getElementById('practiceScore').textContent = score + '/10';
     document.getElementById('practiceVerdict').textContent = getScoreLabelSimple(score);
-    
     document.getElementById('practiceGood').textContent = data.what_you_got_right || 'N/A';
     document.getElementById('practiceMissed').textContent = data.what_you_missed || 'N/A';
     document.getElementById('practiceImprove').textContent = data.how_to_improve || 'N/A';
     document.getElementById('practiceIdeal').textContent = data.ideal_answer || 'N/A';
-    
+
     results.style.display = 'block';
     results.scrollIntoView({behavior: 'smooth', block: 'start'});
-    
+
   } catch (e) {
     loader.style.display = 'none';
     alert('Failed to evaluate. Try again.');
   }
 }
 
+function getScoreLabelSimple(score) {
+  if (score >= 9) return '🏆 Outstanding!';
+  if (score >= 7) return '✅ Strong Answer';
+  if (score >= 5) return '📈 Getting There';
+  if (score >= 3) return '⚠️ Needs Work';
+  return '❌ Keep Practicing';
+}
+
+// ──────────────────────────────────────────────
+// APTITUDE MODE
+// ──────────────────────────────────────────────
+async function generateAptitude() {
+  const category = document.getElementById('aptCategory').value;
+
+  const loader = document.getElementById('aptLoader');
+  const error = document.getElementById('aptError');
+  const section = document.getElementById('aptQuestionSection');
+  const result = document.getElementById('aptResult');
+
+  error.style.display = 'none';
+  result.style.display = 'none';
+  section.style.display = 'none';
+  loader.style.display = 'flex';
+
+  // Reset option styles
+  ['A','B','C','D'].forEach(l => {
+    const el = document.getElementById('optLabel' + l);
+    if (el) { el.classList.remove('correct', 'incorrect'); }
+  });
+  document.querySelectorAll('input[name="aptAnswer"]').forEach(r => r.checked = false);
+
+  const submitBtn = document.getElementById('aptSubmitBtn');
+  submitBtn.style.display = 'flex';
+  document.querySelectorAll('input[name="aptAnswer"]').forEach(r => r.disabled = false);
+
+  try {
+    const res = await fetch('/generate-aptitude', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({category: category || null})
+    });
+
+    const data = await res.json();
+    loader.style.display = 'none';
+
+    if (data.error) {
+      error.textContent = data.error;
+      error.style.display = 'block';
+      return;
+    }
+
+    currentAptQuestion = data;
+
+    document.getElementById('aptCatTag').textContent = data.category;
+    document.getElementById('aptSubcatTag').textContent = data.subcategory;
+    document.getElementById('aptQuestionText').textContent = data.question;
+    document.getElementById('optA').textContent = `(a)  ${data.options.a}`;
+    document.getElementById('optB').textContent = `(b)  ${data.options.b}`;
+    document.getElementById('optC').textContent = `(c)  ${data.options.c}`;
+    document.getElementById('optD').textContent = `(d)  ${data.options.d}`;
+
+    section.style.display = 'block';
+
+  } catch (e) {
+    loader.style.display = 'none';
+    error.textContent = 'Failed to load question. Try again.';
+    error.style.display = 'block';
+  }
+}
+
+async function checkAptitude() {
+  const selected = document.querySelector('input[name="aptAnswer"]:checked');
+
+  if (!selected) {
+    alert('Please select an answer first');
+    return;
+  }
+
+  try {
+    const res = await fetch('/check-aptitude', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        user_answer: selected.value,
+        correct_answer: currentAptQuestion.correct_answer,
+        explanation: currentAptQuestion.explanation
+      })
+    });
+
+    const data = await res.json();
+
+    // Disable options after submission
+    document.querySelectorAll('input[name="aptAnswer"]').forEach(r => r.disabled = true);
+    document.getElementById('aptSubmitBtn').style.display = 'none';
+
+    // Highlight correct/incorrect options
+    const letterMap = {a: 'A', b: 'B', c: 'C', d: 'D'};
+    const correctLetter = currentAptQuestion.correct_answer.toLowerCase();
+    const userLetter = selected.value.toLowerCase();
+
+    document.getElementById('optLabel' + letterMap[correctLetter]).classList.add('correct');
+    if (userLetter !== correctLetter) {
+      document.getElementById('optLabel' + letterMap[userLetter]).classList.add('incorrect');
+    }
+
+    const resultBox = document.getElementById('aptResultBox');
+    resultBox.innerHTML = `
+      <div class="feedback-title">${data.is_correct ? '✅ Correct!' : '❌ Incorrect'}</div>
+      <div class="feedback-content" style="color:${data.is_correct ? 'var(--success)' : 'var(--danger)'}; font-weight:600;">
+        ${data.message}
+      </div>
+    `;
+
+    document.getElementById('aptExplanation').textContent = data.explanation;
+    document.getElementById('aptResult').style.display = 'block';
+    document.getElementById('aptResult').scrollIntoView({behavior: 'smooth', block: 'nearest'});
+
+  } catch (e) {
+    alert('Failed to check answer. Try again.');
+  }
+}
+
+// ──────────────────────────────────────────────
+// CUSTOM MODE
+// ──────────────────────────────────────────────
 async function submitCustomAnswer() {
   const question = document.getElementById('customQuestion').value.trim();
   const answer = document.getElementById('customAnswer').value.trim();
-  
+
   const loader = document.getElementById('customLoader');
   const error = document.getElementById('customError');
   const results = document.getElementById('customResults');
-  
+
   error.style.display = 'none';
   results.style.display = 'none';
-  
+
   if (!question || !answer) {
     error.textContent = 'Please provide both question and answer';
     error.style.display = 'block';
     return;
   }
-  
+
   loader.style.display = 'flex';
-  
+
   try {
     const res = await fetch('/analyze-custom', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({question, answer})
     });
-    
+
     const data = await res.json();
     loader.style.display = 'none';
-    
+
     if (data.error) {
       error.textContent = data.error;
       error.style.display = 'block';
       return;
     }
-    
+
     const score = data.score_out_of_10 || Math.round(data.overall_score / 10);
     document.getElementById('customScore').textContent = score + '/10';
-    
     document.getElementById('customStrengths').textContent = data.what_you_did_well || 'N/A';
     document.getElementById('customGaps').textContent = data.critical_gaps || 'N/A';
     document.getElementById('customPriority').textContent = data.improvement_priority || 'N/A';
     document.getElementById('customIdeal').textContent = data.ideal_answer || 'N/A';
     document.getElementById('customVerdict').textContent = data.interviewer_verdict || 'N/A';
-    
+
     results.style.display = 'block';
     results.scrollIntoView({behavior: 'smooth', block: 'start'});
-    
+
   } catch (e) {
     loader.style.display = 'none';
     error.textContent = 'Failed to evaluate. Try again.';
     error.style.display = 'block';
   }
 }
-
-function getScoreLabelSimple(score) {
-  if (score >= 9) return '🌟 Excellent';
-  if (score >= 7) return '✅ Good';
-  if (score >= 5) return '⚠️ Average';
-  if (score >= 3) return '❌ Weak';
-  return '🚫 Poor';
-}
 </script>
-
 </body>
 </html>
