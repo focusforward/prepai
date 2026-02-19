@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prepto™ — Interview Practice Platform</title>
+<title>Prepto™ — Get Placed</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,9 +32,9 @@ body {
   padding: 0;
 }
 
-/* Thin announcement strip */
+/* Announcement strip */
 .announce-strip {
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  background: linear-gradient(90deg, #7c3aed, #a855f7, #ec4899);
   text-align: center;
   padding: 9px 20px;
   font-size: 13px;
@@ -81,44 +81,46 @@ body {
 
 .hero {
   text-align: center;
-  padding: 52px 24px 32px;
+  padding: 56px 24px 36px;
   max-width: 760px;
   margin: 0 auto;
 }
 
-.hero h1 {
+/* The hook */
+.hero-hook {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(32px, 4.5vw, 46px);
-  line-height: 1.15;
-  margin-bottom: 14px;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.12;
   letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  color: var(--ink);
 }
 
-.hero h1 .gradient {
+.hero-hook .gradient {
   background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero p {
+/* Subheading does the rational work */
+.hero-sub {
   font-size: 16px;
   color: var(--ink-soft);
   line-height: 1.65;
   margin: 0 auto 28px;
-  max-width: 520px;
+  max-width: 480px;
 }
 
 /* Stats strip */
 .stats-strip {
   display: flex;
   justify-content: center;
-  gap: 0;
   margin: 0 auto 32px;
-  max-width: 520px;
+  max-width: 500px;
   background: white;
   border-radius: 12px;
   border: 1px solid var(--border);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
@@ -134,7 +136,6 @@ body {
 .stat-num {
   font-family: 'DM Serif Display', serif;
   font-size: 22px;
-  font-weight: 700;
   background: linear-gradient(135deg, #7c3aed, #ec4899);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -553,17 +554,21 @@ body {
 <body>
 
 <div class="announce-strip">
-  🎯 &nbsp;1,400+ Topics &nbsp;·&nbsp; 500+ Questions &nbsp;·&nbsp; AI-Powered Feedback &nbsp;·&nbsp; Ace Your Placement 🚀
+  🎯 &nbsp;1,400+ Topics &nbsp;·&nbsp; 500+ Questions &nbsp;·&nbsp; AI Feedback &nbsp;·&nbsp; Free to Use
 </div>
 
 <header class="site-header">
   <div class="logo">Prepto<sup>™</sup></div>
-  <div class="header-badge">⚡ Free to Use</div>
+  <div class="header-badge">⚡ Placement Prep</div>
 </header>
 
 <div class="hero">
-  <h1>Master <span class="gradient">every topic</span> from your syllabus</h1>
-  <p>Practice with AI-generated interview questions from your actual engineering curriculum. Get instant feedback on every answer.</p>
+  <div class="hero-hook">
+    Stop reading.<br>
+    Start answering.<br>
+    <span class="gradient">Get placed.</span>
+  </div>
+  <p class="hero-sub">AI-generated questions from your actual syllabus. Instant feedback on every answer. Built for engineering placements.</p>
 
   <div class="stats-strip">
     <div class="stat">
@@ -838,11 +843,11 @@ body {
   </div>
 </div>
 
-<footer style="margin-top:60px; padding:28px 24px; border-top:1px solid var(--border); text-align:center;">
-  <div style="font-family:'DM Serif Display',serif; font-size:18px; background:linear-gradient(135deg,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px;">Prepto™</div>
-  <div style="font-size:13px; color:var(--ink-faint); margin-bottom:10px;">AI-powered interview prep for engineering students</div>
-  <a href="mailto:myprepto@gmail.com" style="font-size:13px; font-weight:600; color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(124,58,237,0.3); padding-bottom:1px;">myprepto@gmail.com</a>
-  <div style="margin-top:16px; font-size:11px; color:var(--ink-faint);">© 2025 Prepto. Built with ❤️ for placement success.</div>
+<footer style="margin-top:60px; padding:32px 24px; border-top:1px solid var(--border); text-align:center; background:var(--surface);">
+  <div style="font-family:'DM Serif Display',serif; font-size:20px; background:linear-gradient(135deg,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:6px;">Prepto™</div>
+  <div style="font-size:13px; color:var(--ink-faint); margin-bottom:12px;">AI-powered placement prep for engineering students</div>
+  <a href="mailto:myprepto@gmail.com" style="font-size:14px; font-weight:600; color:var(--accent); text-decoration:none;">myprepto@gmail.com</a>
+  <div style="margin-top:16px; font-size:11px; color:var(--ink-faint);">© 2025 Prepto · Built for placement success</div>
 </footer>
 
 <script>
