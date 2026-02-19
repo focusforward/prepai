@@ -56,6 +56,19 @@ body {
 
 .logo sup { font-size: 11px; }
 
+.header-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
 .header-badge {
   font-size: 11px;
   font-weight: 600;
@@ -493,13 +506,11 @@ body {
 
 <header class="site-header">
   <div class="logo">Prepto<sup>™</sup></div>
-  <div class="header-badge">⚡ 1400+ Topics</div>
+  <div class="header-caption">1,400+ topics &nbsp;·&nbsp; 500+ questions &nbsp;·&nbsp; Ace your placement 🚀</div>
+  <div style="width:80px"></div>
 </header>
 
 <div class="hero">
-  <div style="text-align:center; font-size:14px; font-weight:600; color:#7c3aed; margin-bottom:20px; letter-spacing:0.3px;">
-    1,400+ topics. 500+ questions. Ace your placement. 🚀
-  </div>
   <h1>Master <span class="gradient">every topic</span> from your syllabus</h1>
   <p>Practice with AI-generated interview questions from your actual engineering curriculum. Get instant feedback on every answer.</p>
 
