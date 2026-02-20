@@ -543,6 +543,118 @@ body {
   border-color: var(--accent);
 }
 
+
+/* ── TOPIC SEARCH ── */
+.topic-search-wrap {
+  position: relative;
+}
+
+.topic-search-input {
+  width: 100%;
+  padding: 12px 14px 12px 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.topic-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+  background: white;
+}
+
+.topic-search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-faint);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.topic-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(124,58,237,0.15);
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.topic-dropdown.open { display: block; }
+
+.topic-group-label {
+  padding: 8px 14px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+}
+
+.topic-item {
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--border);
+}
+
+.topic-item:last-child { border-bottom: none; }
+
+.topic-item:hover,
+.topic-item.highlighted {
+  background: rgba(124,58,237,0.07);
+  color: var(--accent);
+}
+
+.topic-item mark {
+  background: rgba(124,58,237,0.15);
+  color: var(--accent);
+  border-radius: 2px;
+  padding: 0 1px;
+  font-weight: 700;
+}
+
+.topic-empty {
+  padding: 16px 14px;
+  font-size: 13px;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+.topic-random-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 1.5px solid var(--border);
+  background: rgba(124,58,237,0.03);
+}
+
+.topic-random-pill:hover { background: rgba(124,58,237,0.09); }
+
 @media (max-width: 640px) {
   .hero h1 { font-size: 28px; }
   .card { padding: 20px 16px; }
@@ -621,13 +733,25 @@ body {
     </select>
   </div>
 
-  <!-- Topic selection (shown after branch + semester selected) -->
+  <!-- Topic search (shown after branch + semester selected) -->
   <div class="field" id="topicField" style="display:none">
-    <label>Select Topic <span style="font-size:10px;font-weight:400;text-transform:none;color:var(--ink-faint)">(optional)</span></label>
-    <select id="topicSelect">
-      <option value="">Loading topics...</option>
-    </select>
-    <div class="field-hint">Leave empty to get a random topic from this semester</div>
+    <label>Search Topic <span style="font-size:10px;font-weight:400;text-transform:none;color:var(--ink-faint)">(optional — leave blank for random)</span></label>
+    <div class="topic-search-wrap" id="topicSearchWrap">
+      <span class="topic-search-icon">🔍</span>
+      <input
+        type="text"
+        id="topicSearchInput"
+        class="topic-search-input"
+        placeholder="Type to search topics e.g. Binary Tree, Normalization..."
+        autocomplete="off"
+        oninput="filterTopics(this.value)"
+        onfocus="openTopicDropdown()"
+      />
+      <!-- Hidden input to store selected topic value -->
+      <input type="hidden" id="topicSelect" value="" />
+      <div class="topic-dropdown" id="topicDropdown"></div>
+    </div>
+    <div class="field-hint" id="topicFieldHint">Leave blank to get a random topic from this semester</div>
   </div>
 
   <button class="btn btn-primary btn-block" onclick="generateQuestion()">
@@ -846,11 +970,11 @@ body {
 <footer style="margin-top:60px; padding:32px 24px; border-top:1px solid var(--border); text-align:center; background:var(--surface);">
   <div style="font-family:'DM Serif Display',serif; font-size:20px; background:linear-gradient(135deg,#7c3aed,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:6px;">Prepto™</div>
   <div style="font-size:13px; color:var(--ink-faint); margin-bottom:12px;">AI-powered placement prep for engineering students</div>
-  <a href="mailto:myprepto@gmail.com" style="font-size:14px; font-weight:600; color:var(--accent); text-decoration:none;">myprepto@gmail.com</a>
+  <a href="/cdn-cgi/l/email-protection#066b7f76746376726946616b676f6a2865696b" style="font-size:14px; font-weight:600; color:var(--accent); text-decoration:none;"><span class="__cf_email__" data-cfemail="d9b4a0a9abbca9adb699beb4b8b0b5f7bab6b4">[email&#160;protected]</span></a>
   <div style="margin-top:16px; font-size:11px; color:var(--ink-faint);">© 2025 Prepto · Built for placement success</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 let currentMode = 'practice';
 let currentQuestion = null;
 let currentAptQuestion = null;
@@ -913,43 +1037,113 @@ async function loadBranches() {
   }
 }
 
-async function loadTopics(branch, semester) {
-  const topicField = document.getElementById('topicField');
-  const topicSelect = document.getElementById('topicSelect');
+// All topics stored here for search
+let allTopicsData = []; // [{subject, topic}]
 
-  topicSelect.innerHTML = '<option value="">Loading topics...</option>';
+async function loadTopics(branch, semester) {
+  const topicField   = document.getElementById('topicField');
+  const searchInput  = document.getElementById('topicSearchInput');
+  const hiddenSelect = document.getElementById('topicSelect');
+
+  // Reset
+  searchInput.value  = '';
+  hiddenSelect.value = '';
+  allTopicsData      = [];
   topicField.style.display = 'block';
+  renderTopicDropdown('');
 
   try {
-    const res = await fetch(`/get-topics?branch=${encodeURIComponent(branch)}&semester=${semester}`);
+    const res  = await fetch(`/get-topics?branch=${encodeURIComponent(branch)}&semester=${semester}`);
     const data = await res.json();
 
-    topicSelect.innerHTML = '<option value="">Random topic from this semester</option>';
-
     if (data.topics && data.topics.length > 0) {
-      // Group by subject
-      const grouped = {};
-      data.topics.forEach(t => {
-        if (!grouped[t.subject]) grouped[t.subject] = [];
-        grouped[t.subject].push(t.topic);
-      });
-
-      Object.entries(grouped).forEach(([subject, topics]) => {
-        const group = document.createElement('optgroup');
-        group.label = subject;
-        topics.forEach(topic => {
-          const opt = document.createElement('option');
-          opt.value = topic;
-          opt.textContent = topic;
-          group.appendChild(opt);
-        });
-        topicSelect.appendChild(group);
-      });
+      allTopicsData = data.topics; // [{subject, topic}]
     }
+    renderTopicDropdown('');
   } catch (e) {
-    topicSelect.innerHTML = '<option value="">Random topic from this semester</option>';
+    allTopicsData = [];
   }
 }
+
+function openTopicDropdown() {
+  const input = document.getElementById('topicSearchInput');
+  filterTopics(input.value);
+}
+
+function filterTopics(query) {
+  renderTopicDropdown(query);
+  document.getElementById('topicDropdown').classList.add('open');
+  // If cleared, reset selected topic
+  if (!query.trim()) {
+    document.getElementById('topicSelect').value = '';
+    document.getElementById('topicFieldHint').textContent = 'Leave blank to get a random topic from this semester';
+  }
+}
+
+function renderTopicDropdown(query) {
+  const dropdown = document.getElementById('topicDropdown');
+  const q = query.trim().toLowerCase();
+
+  // Filter topics
+  const filtered = q
+    ? allTopicsData.filter(t => t.topic.toLowerCase().includes(q) || t.subject.toLowerCase().includes(q))
+    : allTopicsData;
+
+  let html = '';
+
+  // Always show random option at top
+  html += `<div class="topic-random-pill" onclick="selectTopic('', '🎲 Random topic')">
+    🎲 <span>Random topic from this semester</span>
+  </div>`;
+
+  if (filtered.length === 0 && q) {
+    html += `<div class="topic-empty">No topics found for "<strong>${query}</strong>"</div>`;
+  } else {
+    // Group by subject
+    const grouped = {};
+    filtered.forEach(t => {
+      if (!grouped[t.subject]) grouped[t.subject] = [];
+      grouped[t.subject].push(t.topic);
+    });
+
+    Object.entries(grouped).forEach(([subject, topics]) => {
+      html += `<div class="topic-group-label">${subject}</div>`;
+      topics.forEach(topic => {
+        // Highlight matching text
+        const highlighted = q
+          ? topic.replace(new RegExp(`(${q})`, 'gi'), '<mark>$1</mark>')
+          : topic;
+        html += `<div class="topic-item" onclick="selectTopic('${topic.replace(/'/g, "\'")}', '${topic.replace(/'/g, "\'")}')">
+          ${highlighted}
+        </div>`;
+      });
+    });
+  }
+
+  dropdown.innerHTML = html;
+}
+
+function selectTopic(value, label) {
+  document.getElementById('topicSelect').value = value;
+  document.getElementById('topicSearchInput').value = value ? label : '';
+  document.getElementById('topicDropdown').classList.remove('open');
+
+  const hint = document.getElementById('topicFieldHint');
+  hint.textContent = value
+    ? `✅ Selected: ${label} — click Generate Question`
+    : 'Leave blank to get a random topic from this semester';
+
+  // If a topic was selected, auto-focus the generate button
+  if (value) document.querySelector('#practiceMode .btn-primary').focus();
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const wrap = document.getElementById('topicSearchWrap');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('topicDropdown').classList.remove('open');
+  }
+});
 
 async function loadAptitudeCategories() {
   // This function is intentionally left as a no-op.
@@ -1316,14 +1510,4 @@ async function submitCustomAnswer() {
     document.getElementById('customVerdict').textContent = data.interviewer_verdict || 'N/A';
 
     results.style.display = 'block';
-    results.scrollIntoView({behavior: 'smooth', block: 'start'});
-
-  } catch (e) {
-    loader.style.display = 'none';
-    error.textContent = 'Failed to evaluate. Try again.';
-    error.style.display = 'block';
-  }
-}
-</script>
-</body>
-</html>
+  
