@@ -1,0 +1,23 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Otto Cycle -->
+  <polyline points="100,300 200,100 400,100 500,300 100,300" fill="none" stroke="black" stroke-width="2"/>
+  <text x="150" y="320" font-family="Arial" font-size="12" fill="black">1</text>
+  <text x="200" y="80" font-family="Arial" font-size="12" fill="black">2</text>
+  <text x="400" y="80" font-family="Arial" font-size="12" fill="black">3</text>
+  <text x="500" y="320" font-family="Arial" font-size="12" fill="black">4</text>
+  <text x="300" y="340" font-family="Arial" font-size="14" fill="black">Otto Cycle</text>
+  
+  <!-- Diesel Cycle -->
+  <polyline points="100,300 200,100 300,100 400,200 500,300 100,300" fill="none" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="150" y="320" font-family="Arial" font-size="12" fill="black">1'</text>
+  <text x="200" y="80" font-family="Arial" font-size="12" fill="black">2'</text>
+  <text x="300" y="80" font-family="Arial" font-size="12" fill="black">3'</text>
+  <text x="400" y="220" font-family="Arial" font-size="12" fill="black">4'</text>
+  <text x="300" y="360" font-family="Arial" font-size="14" fill="black">Diesel Cycle</text>
+  
+  <!-- Axes -->
+  <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"/>
+  <line x1="50" y1="350" x2="50" y2="50" stroke="black" stroke-width="2"/>
+  <text x="560" y="355" font-family="Arial" font-size="12" fill="black">Volume</text>
+  <text x="30" y="40" font-family="Arial" font-size="12" fill="black" transform="rotate(-90, 30, 40)">Pressure</text>
+</svg>

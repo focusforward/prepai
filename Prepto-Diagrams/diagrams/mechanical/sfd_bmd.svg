@@ -1,0 +1,23 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simply Supported Beam -->
+  <line x1="50" y1="100" x2="550" y2="100" stroke="black" stroke-width="2"/>
+  <circle cx="50" cy="100" r="5" fill="black"/>
+  <circle cx="550" cy="100" r="5" fill="black"/>
+  <line x1="300" y1="100" x2="300" y2="50" stroke="black" stroke-width="2"/>
+  <polygon points="295,50 305,50 300,40" fill="black"/>
+  <text x="290" y="40" font-family="Arial" font-size="12">P</text>
+  <text x="40" y="120" font-family="Arial" font-size="12">A</text>
+  <text x="540" y="120" font-family="Arial" font-size="12">B</text>
+  <text x="290" y="120" font-family="Arial" font-size="12">C</text>
+
+  <!-- Shear Force Diagram (SFD) -->
+  <line x1="50" y1="200" x2="550" y2="200" stroke="black" stroke-width="1"/>
+  <line x1="50" y1="200" x2="300" y2="300" stroke="black" stroke-width="2"/>
+  <line x1="300" y1="300" x2="550" y2="200" stroke="black" stroke-width="2"/>
+  <text x="10" y="200" font-family="Arial" font-size="12">SFD</text>
+
+  <!-- Bending Moment Diagram (BMD) -->
+  <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="1"/>
+  <path d="M 50 350 Q 300 250 550 350" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="350" font-family="Arial" font-size="12">BMD</text>
+</svg>

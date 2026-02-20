@@ -1,0 +1,27 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .axis { stroke: black; stroke-width: 2; }
+    .process { stroke: black; stroke-width: 1.5; fill: none; }
+    .label { font-family: Arial, sans-serif; font-size: 14px; }
+  </style>
+  <line x1="50" y1="350" x2="550" y2="350" class="axis" />
+  <line x1="50" y1="350" x2="50" y2="50" class="axis" />
+  <path d="M 150 300 Q 250 250 350 300" class="process" />
+  <path d="M 350 300 Q 450 350 450 200" class="process" />
+  <path d="M 450 200 Q 350 150 250 200" class="process" />
+  <path d="M 250 200 Q 150 250 150 300" class="process" />
+  <text x="300" y="370" class="label">Volume (V)</text>
+  <text x="20" y="200" class="label" transform="rotate(-90 20,200)">Pressure (P)</text>
+  <text x="190" y="320" class="label">Isothermal Expansion</text>
+  <text x="370" y="320" class="label">Adiabatic Expansion</text>
+  <text x="370" y="180" class="label">Isothermal Compression</text>
+  <text x="170" y="180" class="label">Adiabatic Compression</text>
+  <circle cx="150" cy="300" r="3" fill="black" />
+  <circle cx="350" cy="300" r="3" fill="black" />
+  <circle cx="450" cy="200" r="3" fill="black" />
+  <circle cx="250" cy="200" r="3" fill="black" />
+  <text x="140" y="315" class="label">A</text>
+  <text x="360" y="315" class="label">B</text>
+  <text x="460" y="205" class="label">C</text>
+  <text x="240" y="215" class="label">D</text>
+</svg>

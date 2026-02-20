@@ -1,0 +1,20 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Driver Gear -->
+  <circle cx="150" cy="200" r="50" stroke="black" stroke-width="2" fill="none"/>
+  <text x="150" y="200" font-family="Arial" font-size="16" text-anchor="middle" fill="black" dy=".3em">Driver</text>
+  <!-- Driven Gear -->
+  <circle cx="450" cy="200" r="100" stroke="black" stroke-width="2" fill="none"/>
+  <text x="450" y="200" font-family="Arial" font-size="16" text-anchor="middle" fill="black" dy=".3em">Driven</text>
+  <!-- Connecting Line -->
+  <line x1="200" y1="200" x2="350" y2="200" stroke="black" stroke-width="2"/>
+  <!-- Speed Ratio Label -->
+  <text x="300" y="180" font-family="Arial" font-size="16" text-anchor="middle" fill="black">Speed Ratio</text>
+  <!-- Arrows -->
+  <line x1="210" y1="190" x2="210" y2="210" stroke="black" stroke-width="2"/>
+  <line x1="210" y1="190" x2="220" y2="200" stroke="black" stroke-width="2"/>
+  <line x1="210" y1="210" x2="220" y2="200" stroke="black" stroke-width="2"/>
+  
+  <line x1="390" y1="190" x2="390" y2="210" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="190" x2="380" y2="200" stroke="black" stroke-width="2"/>
+  <line x1="390" y1="210" x2="380" y2="200" stroke="black" stroke-width="2"/>
+</svg>

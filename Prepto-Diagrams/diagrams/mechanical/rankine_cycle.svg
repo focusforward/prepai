@@ -1,0 +1,26 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Axes -->
+  <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"/>
+  <line x1="50" y1="350" x2="50" y2="50" stroke="black" stroke-width="2"/>
+  <!-- T-S Curve -->
+  <path d="M 100 300 Q 150 100, 250 100 Q 350 100, 400 300" fill="none" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="300" x2="100" y2="350" stroke="black" stroke-width="2"/>
+  <line x1="400" y1="300" x2="400" y2="350" stroke="black" stroke-width="2"/>
+  <!-- Process Lines -->
+  <line x1="100" y1="300" x2="400" y2="300" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="400" y1="300" x2="250" y2="100" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="250" y1="100" x2="100" y2="300" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+  <!-- Labels -->
+  <text x="60" y="360" font-family="Arial" font-size="14">S</text>
+  <text x="30" y="60" font-family="Arial" font-size="14">T</text>
+  <text x="90" y="320" font-family="Arial" font-size="12">1</text>
+  <text x="410" y="320" font-family="Arial" font-size="12">2</text>
+  <text x="260" y="90" font-family="Arial" font-size="12">3</text>
+  <text x="90" y="290" font-family="Arial" font-size="12">4</text>
+  <text x="250" y="370" font-family="Arial" font-size="14">Entropy (S)</text>
+  <text x="10" y="200" font-family="Arial" font-size="14" transform="rotate(-90 20,200)">Temperature (T)</text>
+  <text x="120" y="340" font-family="Arial" font-size="12">Pump</text>
+  <text x="280" y="340" font-family="Arial" font-size="12">Boiler</text>
+  <text x="320" y="140" font-family="Arial" font-size="12">Turbine</text>
+  <text x="200" y="240" font-family="Arial" font-size="12">Condenser</text>
+</svg>

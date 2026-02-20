@@ -1,0 +1,32 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .layer { fill: none; stroke: black; stroke-width: 1; }
+    .label { font-family: Arial, sans-serif; font-size: 12px; }
+  </style>
+  <!-- OSI Model -->
+  <rect x="50" y="50" width="150" height="300" class="layer" />
+  <line x1="50" y1="92.86" x2="200" y2="92.86" class="layer" />
+  <line x1="50" y1="135.72" x2="200" y2="135.72" class="layer" />
+  <line x1="50" y1="178.58" x2="200" y2="178.58" class="layer" />
+  <line x1="50" y1="221.44" x2="200" y2="221.44" class="layer" />
+  <line x1="50" y1="264.3" x2="200" y2="264.3" class="layer" />
+  <line x1="50" y1="307.16" x2="200" y2="307.16" class="layer" />
+  <text x="100" y="75" class="label" text-anchor="middle">Application</text>
+  <text x="100" y="117.86" class="label" text-anchor="middle">Presentation</text>
+  <text x="100" y="160.72" class="label" text-anchor="middle">Session</text>
+  <text x="100" y="203.58" class="label" text-anchor="middle">Transport</text>
+  <text x="100" y="246.44" class="label" text-anchor="middle">Network</text>
+  <text x="100" y="289.3" class="label" text-anchor="middle">Data Link</text>
+  <text x="100" y="332.16" class="label" text-anchor="middle">Physical</text>
+  <text x="125" y="30" class="label" text-anchor="middle" font-weight="bold">OSI Model</text>
+
+  <!-- TCP/IP Model -->
+  <rect x="300" y="50" width="150" height="300" class="layer" />
+  <line x1="300" y1="150" x2="450" y2="150" class="layer" />
+  <line x1="300" y1="250" x2="450" y2="250" class="layer" />
+  <text x="375" y="100" class="label" text-anchor="middle">Application</text>
+  <text x="375" y="200" class="label" text-anchor="middle">Transport</text>
+  <text x="375" y="300" class="label" text-anchor="middle">Internet</text>
+  <text x="375" y="350" class="label" text-anchor="middle">Network Access</text>
+  <text x="375" y="30" class="label" text-anchor="middle" font-weight="bold">TCP/IP Model</text>
+</svg>

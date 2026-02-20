@@ -1,0 +1,20 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .label { font: 14px sans-serif; }
+    .line { stroke: black; stroke-width: 2; fill: none; }
+  </style>
+  <!-- Venturi Tube -->
+  <path class="line" d="M 50 200 L 150 200 Q 175 200 175 175 L 225 125 Q 250 100 275 125 L 325 175 Q 350 200 375 200 L 550 200" />
+  <path class="line" d="M 50 250 L 150 250 Q 175 250 175 225 L 225 175 Q 250 150 275 175 L 325 225 Q 350 250 375 250 L 550 250" />
+  <!-- Pressure Taps -->
+  <line class="line" x1="150" y1="200" x2="150" y2="150" />
+  <line class="line" x1="275" y1="175" x2="275" y2="125" />
+  <line class="line" x1="375" y1="200" x2="375" y2="150" />
+  <!-- Labels -->
+  <text x="140" y="140" class="label">P1</text>
+  <text x="265" y="115" class="label">P2</text>
+  <text x="365" y="140" class="label">P3</text>
+  <text x="100" y="270" class="label">Inlet</text>
+  <text x="500" y="270" class="label">Outlet</text>
+  <text x="250" y="270" class="label">Throat</text>
+</svg>

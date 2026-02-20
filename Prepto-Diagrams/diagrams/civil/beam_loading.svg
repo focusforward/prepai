@@ -1,0 +1,32 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Beam -->
+  <line x1="50" y1="200" x2="550" y2="200" stroke="black" stroke-width="2"/>
+  
+  <!-- Supports -->
+  <circle cx="50" cy="200" r="5" fill="black"/>
+  <text x="30" y="220" font-family="Arial" font-size="12">A</text>
+  <polygon points="545,200 555,200 550,210" fill="black"/>
+  <text x="540" y="220" font-family="Arial" font-size="12">B</text>
+  
+  <!-- UDL -->
+  <line x1="100" y1="180" x2="500" y2="180" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="180" x2="100" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="150" y1="180" x2="150" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="200" y1="180" x2="200" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="250" y1="180" x2="250" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="300" y1="180" x2="300" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="350" y1="180" x2="350" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="400" y1="180" x2="400" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="450" y1="180" x2="450" y2="170" stroke="black" stroke-width="2"/>
+  <line x1="500" y1="180" x2="500" y2="170" stroke="black" stroke-width="2"/>
+  <text x="300" y="160" font-family="Arial" font-size="12" text-anchor="middle">UDL</text>
+  
+  <!-- Point Loads -->
+  <line x1="200" y1="200" x2="200" y2="130" stroke="black" stroke-width="2"/>
+  <polygon points="195,130 205,130 200,120" fill="black"/>
+  <text x="210" y="140" font-family="Arial" font-size="12">P1</text>
+  
+  <line x1="400" y1="200" x2="400" y2="100" stroke="black" stroke-width="2"/>
+  <polygon points="395,100 405,100 400,90" fill="black"/>
+  <text x="410" y="110" font-family="Arial" font-size="12">P2</text>
+</svg>

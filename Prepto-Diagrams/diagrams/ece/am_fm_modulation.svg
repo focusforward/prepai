@@ -1,0 +1,18 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- AM Waveform -->
+  <text x="50" y="30" font-family="Arial" font-size="16">AM Waveform</text>
+  <line x1="50" y1="50" x2="550" y2="50" stroke="black" stroke-width="1"/>
+  <line x1="50" y1="150" x2="550" y2="150" stroke="black" stroke-width="1"/>
+  <path d="M50 100 Q100 50 150 100 T250 100 T350 100 T450 100 T550 100" fill="none" stroke="black" stroke-width="1"/>
+  <path d="M50 100 Q100 150 150 100 T250 100 T350 100 T450 100 T550 100" fill="none" stroke="black" stroke-width="1"/>
+  <text x="275" y="170" font-family="Arial" font-size="12">Carrier Signal</text>
+  <text x="275" y="90" font-family="Arial" font-size="12">Modulated Signal</text>
+
+  <!-- FM Waveform -->
+  <text x="50" y="230" font-family="Arial" font-size="16">FM Waveform</text>
+  <line x1="50" y1="250" x2="550" y2="250" stroke="black" stroke-width="1"/>
+  <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="1"/>
+  <path d="M50 300 Q75 275 100 300 Q125 325 150 300 Q175 275 200 300 Q225 325 250 300 Q275 275 300 300 Q325 325 350 300 Q375 275 400 300 Q425 325 450 300 Q475 275 500 300 Q525 325 550 300" fill="none" stroke="black" stroke-width="1"/>
+  <text x="275" y="370" font-family="Arial" font-size="12">Carrier Signal</text>
+  <text x="275" y="290" font-family="Arial" font-size="12">Modulated Signal</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- DFA Diagram -->
+  <circle cx="150" cy="200" r="30" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="300" cy="200" r="30" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="450" cy="200" r="30" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="450" cy="200" r="25" stroke="black" stroke-width="2" fill="none"/>
+  <text x="145" y="205" font-family="Arial" font-size="16" fill="black">A</text>
+  <text x="295" y="205" font-family="Arial" font-size="16" fill="black">B</text>
+  <text x="445" y="205" font-family="Arial" font-size="16" fill="black">C</text>
+  <line x1="180" y1="200" x2="270" y2="200" stroke="black" stroke-width="2"/>
+  <polygon points="270,200 260,195 260,205" fill="black"/>
+  <line x1="330" y1="200" x2="420" y2="200" stroke="black" stroke-width="2"/>
+  <polygon points="420,200 410,195 410,205" fill="black"/>
+  <text x="225" y="190" font-family="Arial" font-size="14" fill="black">0</text>
+  <text x="375" y="190" font-family="Arial" font-size="14" fill="black">1</text>
+  <text x="150" y="240" font-family="Arial" font-size="16" fill="black">DFA</text>
+  
+  <!-- NFA Diagram -->
+  <circle cx="150" cy="350" r="30" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="300" cy="350" r="30" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="450" cy="350" r="30" stroke="black" stroke-width="2" fill="white"/>
+  <circle cx="450" cy="350" r="25" stroke="black" stroke-width="2" fill="none"/>
+  <text x="145" y="355" font-family="Arial" font-size="16" fill="black">A</text>
+  <text x="295" y="355" font-family="Arial" font-size="16" fill="black">B</text>
+  <text x="445" y="355" font-family="Arial" font-size="16" fill="black">C</text>
+  <line x1="180" y1="350" x2="270" y2="350" stroke="black" stroke-width="2"/>
+  <polygon points="270,350 260,345 260,355" fill="black"/>
+  <line x1="330" y1="350" x2="420" y2="350" stroke="black" stroke-width="2"/>
+  <polygon points="420,350 410,345 410,355" fill="black"/>
+  <line x1="180" y1="350" x2="420" y2="350" stroke="black" stroke-width="2" stroke-dasharray="5,5"/>
+  <polygon points="420,350 410,345 410,355" fill="black"/>
+  <text x="225" y="340" font-family="Arial" font-size="14" fill="black">0</text>
+  <text x="375" y="340" font-family="Arial" font-size="14" fill="black">1</text>
+  <text x="300" y="380" font-family="Arial" font-size="16" fill="black">ε</text>
+  <text x="150" y="390" font-family="Arial" font-size="16" fill="black">NFA</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .label { font: bold 14px sans-serif; }
+    .process { fill: none; stroke: black; stroke-width: 2; }
+    .arrow { fill: none; stroke: black; stroke-width: 2; marker-end: url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+    </marker>
+  </defs>
+  <!-- Screening -->
+  <rect x="50" y="50" width="100" height="50" class="process" />
+  <text x="60" y="80" class="label">Screening</text>
+  <!-- Arrow to Sedimentation -->
+  <line x1="150" y1="75" x2="200" y2="75" class="arrow" />
+  <!-- Sedimentation -->
+  <rect x="200" y="50" width="120" height="50" class="process" />
+  <text x="210" y="80" class="label">Sedimentation</text>
+  <!-- Arrow to Filtration -->
+  <line x1="320" y1="75" x2="370" y2="75" class="arrow" />
+  <!-- Filtration -->
+  <rect x="370" y="50" width="100" height="50" class="process" />
+  <text x="380" y="80" class="label">Filtration</text>
+  <!-- Arrow to Disinfection -->
+  <line x1="470" y1="75" x2="520" y2="75" class="arrow" />
+  <!-- Disinfection -->
+  <rect x="520" y="50" width="120" height="50" class="process" />
+  <text x="530" y="80" class="label">Disinfection</text>
+</svg>

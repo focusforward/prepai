@@ -1,0 +1,25 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .line { stroke: black; stroke-width: 2; }
+    .arrow { fill: black; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+  </style>
+  <!-- Client and Server Labels -->
+  <text x="50" y="30" class="text">Client</text>
+  <text x="500" y="30" class="text">Server</text>
+  <!-- Vertical Lines for Client and Server -->
+  <line x1="100" y1="50" x2="100" y2="350" class="line"/>
+  <line x1="500" y1="50" x2="500" y2="350" class="line"/>
+  <!-- SYN Arrow -->
+  <line x1="100" y1="100" x2="500" y2="100" class="line"/>
+  <polygon points="495,95 505,100 495,105" class="arrow"/>
+  <text x="300" y="90" class="text" text-anchor="middle">SYN</text>
+  <!-- SYN-ACK Arrow -->
+  <line x1="500" y1="200" x2="100" y2="200" class="line"/>
+  <polygon points="105,195 95,200 105,205" class="arrow"/>
+  <text x="300" y="190" class="text" text-anchor="middle">SYN-ACK</text>
+  <!-- ACK Arrow -->
+  <line x1="100" y1="300" x2="500" y2="300" class="line"/>
+  <polygon points="495,295 505,300 495,305" class="arrow"/>
+  <text x="300" y="290" class="text" text-anchor="middle">ACK</text>
+</svg>
