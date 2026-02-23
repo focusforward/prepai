@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+openai
+pandas
+openpyxl
+python-dotenv
+requests
+httpx
