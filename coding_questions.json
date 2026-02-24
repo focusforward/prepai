@@ -1,0 +1,5152 @@
+[
+  {
+    "id": 1,
+    "title": "Two Sum",
+    "topic": "Array",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Given array and target, return indices of two numbers that add to target.",
+    "examples": [
+      {
+        "input": "nums=[2,7,11,15], target=9",
+        "output": "[0,1]"
+      }
+    ],
+    "constraints": "2<=nums.length<=10^4",
+    "hints": [
+      "Use hash map to store seen values",
+      "For each element check if target-element exists"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Best Time to Buy and Sell Stock",
+    "topic": "Array",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find max profit buying once and selling once from prices array.",
+    "examples": [
+      {
+        "input": "prices=[7,1,5,3,6,4]",
+        "output": "5"
+      }
+    ],
+    "constraints": "1<=prices.length<=10^5",
+    "hints": [
+      "Track minimum price so far",
+      "Profit = current - min_so_far"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Maximum Subarray",
+    "topic": "Array",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find contiguous subarray with largest sum.",
+    "examples": [
+      {
+        "input": "nums=[-2,1,-3,4,-1,2,1,-5,4]",
+        "output": "6",
+        "explanation": "[4,-1,2,1]"
+      }
+    ],
+    "constraints": "-10^4<=nums[i]<=10^4",
+    "hints": [
+      "Kadane's: running sum, reset to 0 if negative",
+      "Track global max"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Move Zeroes",
+    "topic": "Array",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Move all 0s to end in-place preserving order of non-zero elements.",
+    "examples": [
+      {
+        "input": "nums=[0,1,0,3,12]",
+        "output": "[1,3,12,0,0]"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^4",
+    "hints": [
+      "Two pointer approach",
+      "One pointer tracks position for next non-zero"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Contains Duplicate",
+    "topic": "Array",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return true if any value appears at least twice.",
+    "examples": [
+      {
+        "input": "nums=[1,2,3,1]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^5",
+    "hints": [
+      "Use a hash set",
+      "Add elements checking if already present"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Product of Array Except Self",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return array where answer[i] = product of all elements except nums[i]. No division, O(n).",
+    "examples": [
+      {
+        "input": "nums=[1,2,3,4]",
+        "output": "[24,12,8,6]"
+      }
+    ],
+    "constraints": "2<=nums.length<=10^5",
+    "hints": [
+      "Prefix products left to right",
+      "Multiply with suffix products right to left"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Find the Duplicate Number",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find duplicate in n+1 integer array with values in [1,n]. No extra space.",
+    "examples": [
+      {
+        "input": "nums=[1,3,4,2,2]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=n<=10^5",
+    "hints": [
+      "Floyd's cycle detection on array as linked list",
+      "Or binary search on value range"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Maximum Product Subarray",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find contiguous subarray with largest product.",
+    "examples": [
+      {
+        "input": "nums=[2,3,-2,4]",
+        "output": "6"
+      }
+    ],
+    "constraints": "-10<=nums[i]<=10",
+    "hints": [
+      "Track both max and min product (negatives flip sign)",
+      "Reset when hitting zero"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "3Sum",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return all unique triplets summing to zero.",
+    "examples": [
+      {
+        "input": "nums=[-1,0,1,2,-1,-4]",
+        "output": "[[-1,-1,2],[-1,0,1]]"
+      }
+    ],
+    "constraints": "0<=nums.length<=3000",
+    "hints": [
+      "Sort first",
+      "Fix one element, two pointers for remaining pair"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Container With Most Water",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find two lines forming container with most water.",
+    "examples": [
+      {
+        "input": "height=[1,8,6,2,5,4,8,3,7]",
+        "output": "49"
+      }
+    ],
+    "constraints": "2<=n<=10^5",
+    "hints": [
+      "Two pointers from both ends",
+      "Move pointer with smaller height inward"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Merge Intervals",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Merge all overlapping intervals.",
+    "examples": [
+      {
+        "input": "[[1,3],[2,6],[8,10]]",
+        "output": "[[1,6],[8,10]]"
+      }
+    ],
+    "constraints": "1<=intervals.length<=10^4",
+    "hints": [
+      "Sort by start time",
+      "Merge if current start <= previous end"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Search in Rotated Sorted Array",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find target in rotated sorted array in O(log n).",
+    "examples": [
+      {
+        "input": "nums=[4,5,6,7,0,1,2], target=0",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=nums.length<=5000",
+    "hints": [
+      "Modified binary search",
+      "Determine which half is sorted"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Subarray Sum Equals K",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Count subarrays whose sum equals k.",
+    "examples": [
+      {
+        "input": "nums=[1,1,1], k=2",
+        "output": "2"
+      }
+    ],
+    "constraints": "-1000<=nums[i]<=1000",
+    "hints": [
+      "Prefix sum + hash map",
+      "Check if (sum-k) seen before"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Trapping Rain Water",
+    "topic": "Array",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Compute water trapped after raining given elevation map.",
+    "examples": [
+      {
+        "input": "height=[0,1,0,2,1,0,1,3,2,1,2,1]",
+        "output": "6"
+      }
+    ],
+    "constraints": "0<=height[i]<=10^5",
+    "hints": [
+      "Two pointer: water=min(maxL,maxR)-height[i]",
+      "Track max from both sides"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "First Missing Positive",
+    "topic": "Array",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Smallest missing positive integer in O(n) time O(1) space.",
+    "examples": [
+      {
+        "input": "nums=[1,2,0]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^5",
+    "hints": [
+      "Use array as hash map",
+      "Place x at index x-1 if 1<=x<=n"
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Jump Game",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Can you reach the last index given max jump lengths?",
+    "examples": [
+      {
+        "input": "nums=[2,3,1,1,4]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^4",
+    "hints": [
+      "Track farthest reachable index",
+      "Return false if current > farthest"
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Majority Element",
+    "topic": "Array",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return element appearing more than n/2 times.",
+    "examples": [
+      {
+        "input": "nums=[3,2,3]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=n<=5*10^4",
+    "hints": [
+      "Boyer-Moore Voting Algorithm",
+      "Flip candidate when count hits 0"
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Sort Colors",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Sort array of 0s, 1s, 2s in one pass in-place.",
+    "examples": [
+      {
+        "input": "nums=[2,0,2,1,1,0]",
+        "output": "[0,0,1,1,2,2]"
+      }
+    ],
+    "constraints": "nums[i] is 0, 1, or 2",
+    "hints": [
+      "Dutch National Flag: three pointers",
+      "Swap based on nums[mid] value"
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Longest Consecutive Sequence",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Length of longest consecutive sequence in O(n).",
+    "examples": [
+      {
+        "input": "nums=[100,4,200,1,3,2]",
+        "output": "4"
+      }
+    ],
+    "constraints": "0<=nums.length<=10^5",
+    "hints": [
+      "Use hash set",
+      "Only start counting when num-1 not in set"
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Kth Largest Element",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find kth largest element in unsorted array.",
+    "examples": [
+      {
+        "input": "nums=[3,2,1,5,6,4], k=2",
+        "output": "5"
+      }
+    ],
+    "constraints": "1<=k<=nums.length",
+    "hints": [
+      "Min-heap of size k",
+      "Or QuickSelect for O(n) average"
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Missing Number",
+    "topic": "Array",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Find missing number in array of 0 to n.",
+    "examples": [
+      {
+        "input": "nums=[3,0,1]",
+        "output": "2"
+      }
+    ],
+    "constraints": "n==nums.length",
+    "hints": "Expected sum = n*(n+1)/2, subtract actual sum"
+  },
+  {
+    "id": 22,
+    "title": "Next Permutation",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Rearrange into lexicographically next permutation.",
+    "examples": [
+      {
+        "input": "nums=[1,2,3]",
+        "output": "[1,3,2]"
+      }
+    ],
+    "constraints": "1<=nums.length<=100",
+    "hints": [
+      "Find rightmost element smaller than successor",
+      "Swap with smallest larger element, reverse suffix"
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Spiral Matrix",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return all elements of matrix in spiral order.",
+    "examples": [
+      {
+        "input": "[[1,2,3],[4,5,6],[7,8,9]]",
+        "output": "[1,2,3,6,9,8,7,4,5]"
+      }
+    ],
+    "constraints": "m,n>=1",
+    "hints": [
+      "Track top/bottom/left/right boundaries",
+      "Traverse right,down,left,up, shrink boundaries"
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Subsets",
+    "topic": "Array",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return all possible subsets of array of unique elements.",
+    "examples": [
+      {
+        "input": "nums=[1,2,3]",
+        "output": "[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]"
+      }
+    ],
+    "constraints": "nums.length<=10",
+    "hints": [
+      "Backtracking",
+      "Or iterative: add each element to all existing subsets"
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Maximum Sum Circular Subarray",
+    "topic": "Array",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Max subarray sum in circular array.",
+    "examples": [
+      {
+        "input": "nums=[5,-3,5]",
+        "output": "10"
+      }
+    ],
+    "constraints": "-3*10^4<=nums[i]<=3*10^4",
+    "hints": [
+      "Case 1: normal max subarray",
+      "Case 2: circular = totalSum - minSubarray"
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Valid Palindrome",
+    "topic": "String",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return true if string is palindrome (alphanumeric only, case insensitive).",
+    "examples": [
+      {
+        "input": "s='A man, a plan, a canal: Panama'",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=s.length<=2*10^5",
+    "hints": [
+      "Two pointers from both ends",
+      "Skip non-alphanumeric"
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Valid Anagram",
+    "topic": "String",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return true if t is an anagram of s.",
+    "examples": [
+      {
+        "input": "s='anagram', t='nagaram'",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=length<=5*10^4",
+    "hints": [
+      "Count character frequencies",
+      "Array of size 26"
+    ]
+  },
+  {
+    "id": 28,
+    "title": "Longest Substring Without Repeating Characters",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find length of longest substring without repeating characters.",
+    "examples": [
+      {
+        "input": "s='abcabcbb'",
+        "output": "3"
+      }
+    ],
+    "constraints": "0<=s.length<=5*10^4",
+    "hints": [
+      "Sliding window with hash set",
+      "Expand right, shrink left on duplicate"
+    ]
+  },
+  {
+    "id": 29,
+    "title": "Longest Palindromic Substring",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return longest palindromic substring.",
+    "examples": [
+      {
+        "input": "s='babad'",
+        "output": "bab"
+      }
+    ],
+    "constraints": "1<=s.length<=1000",
+    "hints": [
+      "Expand around center",
+      "Handle odd and even length"
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Group Anagrams",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Group anagrams from array of strings.",
+    "examples": [
+      {
+        "input": "['eat','tea','tan','ate','nat','bat']",
+        "output": "[['eat','tea','ate'],['tan','nat'],['bat']]"
+      }
+    ],
+    "constraints": "1<=strs.length<=10^4",
+    "hints": [
+      "Sort each string as key",
+      "Hash map with sorted string as key"
+    ]
+  },
+  {
+    "id": 31,
+    "title": "Minimum Window Substring",
+    "topic": "String",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum window in s containing all chars of t.",
+    "examples": [
+      {
+        "input": "s='ADOBECODEBANC', t='ABC'",
+        "output": "BANC"
+      }
+    ],
+    "constraints": "1<=s.length<=10^5",
+    "hints": [
+      "Sliding window with two frequency maps",
+      "Expand right until valid, shrink left"
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Valid Parentheses",
+    "topic": "String",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return true if brackets are properly opened and closed.",
+    "examples": [
+      {
+        "input": "s='()[]{}'",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=s.length<=10^4",
+    "hints": [
+      "Use a stack",
+      "Push open, pop and match on close"
+    ]
+  },
+  {
+    "id": 33,
+    "title": "Generate Parentheses",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Generate all combinations of n pairs of valid parentheses.",
+    "examples": [
+      {
+        "input": "n=3",
+        "output": "['((()))','(()())','(())()','()(())','()()()']"
+      }
+    ],
+    "constraints": "1<=n<=8",
+    "hints": [
+      "Backtracking with open/close counts",
+      "Add ( if open<n, add ) if close<open"
+    ]
+  },
+  {
+    "id": 34,
+    "title": "Longest Common Prefix",
+    "topic": "String",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find longest common prefix string among array of strings.",
+    "examples": [
+      {
+        "input": "['flower','flow','flight']",
+        "output": "fl"
+      }
+    ],
+    "constraints": "1<=strs.length<=200",
+    "hints": [
+      "Compare first string with each other",
+      "Stop at mismatch"
+    ]
+  },
+  {
+    "id": 35,
+    "title": "Roman to Integer",
+    "topic": "String",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Convert Roman numeral to integer.",
+    "examples": [
+      {
+        "input": "s='IX'",
+        "output": "9"
+      }
+    ],
+    "constraints": "1<=s.length<=15",
+    "hints": [
+      "Map symbols to values",
+      "If current < next, subtract; else add"
+    ]
+  },
+  {
+    "id": 36,
+    "title": "Word Break",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Can string s be segmented into dictionary words?",
+    "examples": [
+      {
+        "input": "s='leetcode', wordDict=['leet','code']",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=s.length<=300",
+    "hints": [
+      "DP: dp[i] = can s[0..i] be segmented",
+      "Check all substrings ending at i"
+    ]
+  },
+  {
+    "id": 37,
+    "title": "Decode String",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Decode string like '3[a2[c]]' to 'accaccacc'.",
+    "examples": [
+      {
+        "input": "s='3[a]2[bc]'",
+        "output": "aaabcbc"
+      }
+    ],
+    "constraints": "1<=s.length<=30",
+    "hints": [
+      "Stack for nested encodings",
+      "Push count and string on '[', pop on ']'"
+    ]
+  },
+  {
+    "id": 38,
+    "title": "Reverse Words in a String",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Reverse the order of words in string.",
+    "examples": [
+      {
+        "input": "s='the sky is blue'",
+        "output": "blue is sky the"
+      }
+    ],
+    "constraints": "1<=s.length<=10^4",
+    "hints": [
+      "Split, filter empty, reverse",
+      "Or two-pointer without split"
+    ]
+  },
+  {
+    "id": 39,
+    "title": "Find All Anagrams",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find all start indices of anagrams of p in s.",
+    "examples": [
+      {
+        "input": "s='cbaebabacd', p='abc'",
+        "output": "[0,6]"
+      }
+    ],
+    "constraints": "1<=s.length<=3*10^4",
+    "hints": [
+      "Sliding window of size p",
+      "Compare frequency maps"
+    ]
+  },
+  {
+    "id": 40,
+    "title": "Longest Repeating Character Replacement",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Longest substring with same char after at most k replacements.",
+    "examples": [
+      {
+        "input": "s='AABABBA', k=1",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=s.length<=10^5",
+    "hints": [
+      "Sliding window",
+      "Valid if length - maxFreq <= k"
+    ]
+  },
+  {
+    "id": 41,
+    "title": "Implement strStr",
+    "topic": "String",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return index of first occurrence of needle in haystack.",
+    "examples": [
+      {
+        "input": "haystack='sadbutsad', needle='sad'",
+        "output": "0"
+      }
+    ],
+    "constraints": "1<=lengths<=10^4",
+    "hints": [
+      "Sliding window of needle length",
+      "Or KMP algorithm"
+    ]
+  },
+  {
+    "id": 42,
+    "title": "Count and Say",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Return nth term of count-and-say sequence.",
+    "examples": [
+      {
+        "input": "n=4",
+        "output": "1211"
+      }
+    ],
+    "constraints": "1<=n<=30",
+    "hints": [
+      "Build each term from previous",
+      "Count consecutive characters"
+    ]
+  },
+  {
+    "id": 43,
+    "title": "Integer to Roman",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Convert integer to Roman numeral.",
+    "examples": [
+      {
+        "input": "num=3749",
+        "output": "MMMDCCXLIX"
+      }
+    ],
+    "constraints": "1<=num<=3999",
+    "hints": [
+      "Greedy with value-symbol pairs",
+      "Pick largest symbol that fits"
+    ]
+  },
+  {
+    "id": 44,
+    "title": "Palindrome Partitioning",
+    "topic": "String",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Partition string so every substring is palindrome. Return all partitions.",
+    "examples": [
+      {
+        "input": "s='aab'",
+        "output": "[['a','a','b'],['aa','b']]"
+      }
+    ],
+    "constraints": "1<=s.length<=16",
+    "hints": [
+      "Backtracking trying palindrome prefixes",
+      "Precompute palindromes with DP"
+    ]
+  },
+  {
+    "id": 45,
+    "title": "Text Justification",
+    "topic": "String",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Format text so each line has exactly maxWidth characters, fully justified.",
+    "examples": [
+      {
+        "input": "words=['This','is','an','example'], maxWidth=16",
+        "output": "['This    is    an','example         ']"
+      }
+    ],
+    "constraints": "1<=words.length<=300",
+    "hints": [
+      "Greedily pack words into lines",
+      "Distribute spaces evenly"
+    ]
+  },
+  {
+    "id": 46,
+    "title": "Reverse Linked List",
+    "topic": "Linked List",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Reverse a singly linked list.",
+    "examples": [
+      {
+        "input": "[1,2,3,4,5]",
+        "output": "[5,4,3,2,1]"
+      }
+    ],
+    "constraints": "0<=length<=5000",
+    "hints": [
+      "Iterative: prev/curr/next pointers",
+      "Recursive: reverse rest, point next.next to current"
+    ]
+  },
+  {
+    "id": 47,
+    "title": "Detect Cycle",
+    "topic": "Linked List",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return true if linked list has a cycle.",
+    "examples": [
+      {
+        "input": "[3,2,0,-4] cycle at pos 1",
+        "output": "true"
+      }
+    ],
+    "constraints": "0<=nodes<=10^4",
+    "hints": [
+      "Floyd's tortoise and hare",
+      "Slow 1 step, fast 2 steps"
+    ]
+  },
+  {
+    "id": 48,
+    "title": "Find Middle of Linked List",
+    "topic": "Linked List",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Return middle node (second middle if two).",
+    "examples": [
+      {
+        "input": "[1,2,3,4,5]",
+        "output": "Node 3"
+      }
+    ],
+    "constraints": "1<=nodes<=100",
+    "hints": [
+      "Slow and fast pointers",
+      "Fast reaches end, slow at middle"
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Merge Two Sorted Lists",
+    "topic": "Linked List",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Merge two sorted linked lists.",
+    "examples": [
+      {
+        "input": "[1,2,4] and [1,3,4]",
+        "output": "[1,1,2,3,4,4]"
+      }
+    ],
+    "constraints": "0<=nodes<=50",
+    "hints": [
+      "Dummy head node",
+      "Compare heads, attach smaller"
+    ]
+  },
+  {
+    "id": 50,
+    "title": "Remove Nth Node From End",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Remove nth node from end in one pass.",
+    "examples": [
+      {
+        "input": "[1,2,3,4,5], n=2",
+        "output": "[1,2,3,5]"
+      }
+    ],
+    "constraints": "1<=n<=length",
+    "hints": [
+      "Two pointers with gap of n",
+      "Advance fast n steps first"
+    ]
+  },
+  {
+    "id": 51,
+    "title": "Linked List Cycle II",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find node where cycle begins.",
+    "examples": [
+      {
+        "input": "[3,2,0,-4], pos=1",
+        "output": "Node at index 1"
+      }
+    ],
+    "constraints": "0<=nodes<=10^4",
+    "hints": [
+      "Floyd's to find meeting point",
+      "Move one pointer to head, both advance 1"
+    ]
+  },
+  {
+    "id": 52,
+    "title": "Add Two Numbers",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Add two numbers represented as reversed linked lists.",
+    "examples": [
+      {
+        "input": "[2,4,3]+[5,6,4]",
+        "output": "[7,0,8]",
+        "explanation": "342+465=807"
+      }
+    ],
+    "constraints": "1<=nodes<=100",
+    "hints": [
+      "Traverse simultaneously",
+      "Handle carry carefully"
+    ]
+  },
+  {
+    "id": 53,
+    "title": "LRU Cache",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Design LRU cache with O(1) get and put.",
+    "examples": [
+      {
+        "input": "capacity=2, put(1,1),put(2,2),get(1)=1,put(3,3),get(2)=-1",
+        "output": "as described"
+      }
+    ],
+    "constraints": "1<=capacity<=3000",
+    "hints": [
+      "Doubly linked list + hash map",
+      "Move accessed to front, evict from back"
+    ]
+  },
+  {
+    "id": 54,
+    "title": "Copy List with Random Pointer",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Deep copy linked list with next and random pointers.",
+    "examples": [
+      {
+        "input": "[[7,null],[13,0],[11,4]]",
+        "output": "Deep copy"
+      }
+    ],
+    "constraints": "0<=n<=1000",
+    "hints": [
+      "Hash map original to copy",
+      "Or interleave copied nodes"
+    ]
+  },
+  {
+    "id": 55,
+    "title": "Sort List",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Sort linked list in O(n log n) constant space.",
+    "examples": [
+      {
+        "input": "[4,2,1,3]",
+        "output": "[1,2,3,4]"
+      }
+    ],
+    "constraints": "-10^5<=val<=10^5",
+    "hints": [
+      "Merge sort on linked list",
+      "Find middle, split, recurse, merge"
+    ]
+  },
+  {
+    "id": 56,
+    "title": "Palindrome Linked List",
+    "topic": "Linked List",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return true if linked list is palindrome.",
+    "examples": [
+      {
+        "input": "[1,2,2,1]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=n<=10^5",
+    "hints": [
+      "Find middle, reverse second half",
+      "Compare both halves"
+    ]
+  },
+  {
+    "id": 57,
+    "title": "Intersection of Two Linked Lists",
+    "topic": "Linked List",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find intersection node of two lists.",
+    "examples": [
+      {
+        "input": "[4,1,8,4,5] and [5,6,1,8,4,5]",
+        "output": "Node 8"
+      }
+    ],
+    "constraints": "0<=nodes<=3*10^4",
+    "hints": [
+      "Two pointers switching lists at end",
+      "Meet at intersection"
+    ]
+  },
+  {
+    "id": 58,
+    "title": "Reverse Linked List II",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Reverse nodes from position left to right.",
+    "examples": [
+      {
+        "input": "[1,2,3,4,5], left=2, right=4",
+        "output": "[1,4,3,2,5]"
+      }
+    ],
+    "constraints": "1<=left<=right<=n",
+    "hints": [
+      "Find node before left",
+      "Reverse sublist"
+    ]
+  },
+  {
+    "id": 59,
+    "title": "Reorder List",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Reorder L0->Ln->L1->Ln-1->L2->Ln-2...",
+    "examples": [
+      {
+        "input": "[1,2,3,4]",
+        "output": "[1,4,2,3]"
+      }
+    ],
+    "constraints": "1<=n<=5*10^4",
+    "hints": [
+      "Find middle, reverse second half",
+      "Merge alternately"
+    ]
+  },
+  {
+    "id": 60,
+    "title": "Rotate List",
+    "topic": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Rotate linked list right by k places.",
+    "examples": [
+      {
+        "input": "[1,2,3,4,5], k=2",
+        "output": "[4,5,1,2,3]"
+      }
+    ],
+    "constraints": "0<=k<=2*10^9",
+    "hints": [
+      "Make circular, break at (length-k)th node",
+      "k = k % length"
+    ]
+  },
+  {
+    "id": 61,
+    "title": "Maximum Depth of Binary Tree",
+    "topic": "Tree",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return maximum depth of binary tree.",
+    "examples": [
+      {
+        "input": "[3,9,20,null,null,15,7]",
+        "output": "3"
+      }
+    ],
+    "constraints": "0<=nodes<=10^4",
+    "hints": [
+      "1 + max(left depth, right depth)",
+      "Or BFS level by level"
+    ]
+  },
+  {
+    "id": 62,
+    "title": "Validate BST",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Determine if binary tree is a valid BST.",
+    "examples": [
+      {
+        "input": "[2,1,3]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=nodes<=10^4",
+    "hints": [
+      "Inorder should be strictly increasing",
+      "Or pass min/max bounds recursively"
+    ]
+  },
+  {
+    "id": 63,
+    "title": "Symmetric Tree",
+    "topic": "Tree",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Check if binary tree is mirror of itself.",
+    "examples": [
+      {
+        "input": "[1,2,2,3,4,4,3]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=nodes<=1000",
+    "hints": [
+      "Recursive isMirror(left,right)",
+      "Check val equal and subtrees mirror"
+    ]
+  },
+  {
+    "id": 64,
+    "title": "Level Order Traversal",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return level order traversal as list of lists.",
+    "examples": [
+      {
+        "input": "[3,9,20,null,null,15,7]",
+        "output": "[[3],[9,20],[15,7]]"
+      }
+    ],
+    "constraints": "0<=nodes<=2000",
+    "hints": [
+      "BFS with queue",
+      "Track level size"
+    ]
+  },
+  {
+    "id": 65,
+    "title": "Lowest Common Ancestor BST",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find LCA of two nodes in BST.",
+    "examples": [
+      {
+        "input": "[6,2,8], p=2, q=8",
+        "output": "6"
+      }
+    ],
+    "constraints": "2<=nodes<=10^5",
+    "hints": [
+      "Both < root: go left",
+      "Both > root: go right; else root is LCA"
+    ]
+  },
+  {
+    "id": 66,
+    "title": "Binary Tree Maximum Path Sum",
+    "topic": "Tree",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return maximum path sum (path can start and end at any node).",
+    "examples": [
+      {
+        "input": "[-10,9,20,null,null,15,7]",
+        "output": "42"
+      }
+    ],
+    "constraints": "-1000<=val<=1000",
+    "hints": [
+      "For each node: gain = val + max(left,right,0)",
+      "Track global max including both branches"
+    ]
+  },
+  {
+    "id": 67,
+    "title": "Path Sum",
+    "topic": "Tree",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return true if root-to-leaf path sums to targetSum.",
+    "examples": [
+      {
+        "input": "[5,4,8,11,null,13,4], target=22",
+        "output": "true"
+      }
+    ],
+    "constraints": "0<=nodes<=5000",
+    "hints": [
+      "DFS subtracting node value",
+      "Return true at leaf if remaining==0"
+    ]
+  },
+  {
+    "id": 68,
+    "title": "Diameter of Binary Tree",
+    "topic": "Tree",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return length of longest path between any two nodes.",
+    "examples": [
+      {
+        "input": "[1,2,3,4,5]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=nodes<=10^4",
+    "hints": [
+      "leftHeight + rightHeight at each node",
+      "Track global max during DFS"
+    ]
+  },
+  {
+    "id": 69,
+    "title": "Balanced Binary Tree",
+    "topic": "Tree",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Check if tree is height-balanced.",
+    "examples": [
+      {
+        "input": "[3,9,20,null,null,15,7]",
+        "output": "true"
+      }
+    ],
+    "constraints": "0<=nodes<=5000",
+    "hints": [
+      "DFS returning height or -1 if unbalanced",
+      "Check |leftH - rightH| <= 1"
+    ]
+  },
+  {
+    "id": 70,
+    "title": "Invert Binary Tree",
+    "topic": "Tree",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Invert binary tree and return root.",
+    "examples": [
+      {
+        "input": "[4,2,7,1,3,6,9]",
+        "output": "[4,7,2,9,6,3,1]"
+      }
+    ],
+    "constraints": "0<=nodes<=100",
+    "hints": [
+      "Swap left and right at every node",
+      "Recursive or iterative"
+    ]
+  },
+  {
+    "id": 71,
+    "title": "Construct Tree from Preorder and Inorder",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Build tree from preorder and inorder traversals.",
+    "examples": [
+      {
+        "input": "preorder=[3,9,20,15,7], inorder=[9,3,15,20,7]",
+        "output": "Tree"
+      }
+    ],
+    "constraints": "1<=n<=3000",
+    "hints": [
+      "First of preorder is root",
+      "Find root in inorder to split subtrees"
+    ]
+  },
+  {
+    "id": 72,
+    "title": "Kth Smallest in BST",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return kth smallest value in BST.",
+    "examples": [
+      {
+        "input": "[3,1,4,null,2], k=1",
+        "output": "1"
+      }
+    ],
+    "constraints": "1<=k<=n<=10^4",
+    "hints": [
+      "Inorder traversal gives sorted order",
+      "Stop at kth element"
+    ]
+  },
+  {
+    "id": 73,
+    "title": "Serialize and Deserialize Binary Tree",
+    "topic": "Tree",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Design serialize and deserialize for binary tree.",
+    "examples": [
+      {
+        "input": "[1,2,3,null,null,4,5]",
+        "output": "Same tree after roundtrip"
+      }
+    ],
+    "constraints": "0<=nodes<=10^4",
+    "hints": [
+      "BFS or preorder with null markers",
+      "Queue for deserialization"
+    ]
+  },
+  {
+    "id": 74,
+    "title": "Right Side View",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return values visible from right side (one per level).",
+    "examples": [
+      {
+        "input": "[1,2,3,null,5,null,4]",
+        "output": "[1,3,4]"
+      }
+    ],
+    "constraints": "0<=nodes<=100",
+    "hints": [
+      "BFS: last node of each level",
+      "Or DFS: right before left, track depth"
+    ]
+  },
+  {
+    "id": 75,
+    "title": "Count Good Nodes",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Count nodes where value >= all values on path from root.",
+    "examples": [
+      {
+        "input": "[3,1,4,3,null,1,5]",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=nodes<=10^5",
+    "hints": [
+      "DFS passing max value on path",
+      "Node is good if val >= maxSoFar"
+    ]
+  },
+  {
+    "id": 76,
+    "title": "All Nodes Distance K",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find all nodes at distance k from target node.",
+    "examples": [
+      {
+        "input": "target=5, k=2",
+        "output": "[7,4,1]"
+      }
+    ],
+    "constraints": "1<=k<=1000",
+    "hints": [
+      "Convert to undirected graph",
+      "BFS from target for k steps"
+    ]
+  },
+  {
+    "id": 77,
+    "title": "Recover BST",
+    "topic": "Tree",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Two BST nodes are swapped. Recover without changing structure.",
+    "examples": [
+      {
+        "input": "root=[1,3,null,null,2]",
+        "output": "[3,1,null,null,2]"
+      }
+    ],
+    "constraints": "2<=nodes<=1000",
+    "hints": [
+      "Inorder finds two swapped nodes",
+      "First wrong: prev>curr; Second: prev>curr again"
+    ]
+  },
+  {
+    "id": 78,
+    "title": "Unique BSTs",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return number of structurally unique BSTs with n nodes.",
+    "examples": [
+      {
+        "input": "n=3",
+        "output": "5"
+      }
+    ],
+    "constraints": "1<=n<=19",
+    "hints": [
+      "Catalan number",
+      "dp[n] = sum of dp[i-1]*dp[n-i] for i in 1..n"
+    ]
+  },
+  {
+    "id": 79,
+    "title": "Convert Sorted Array to BST",
+    "topic": "Tree",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Convert sorted array to height-balanced BST.",
+    "examples": [
+      {
+        "input": "[-10,-3,0,5,9]",
+        "output": "[0,-3,9,-10,null,5]"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^4",
+    "hints": [
+      "Pick middle as root",
+      "Recurse on left and right halves"
+    ]
+  },
+  {
+    "id": 80,
+    "title": "Flatten Tree to Linked List",
+    "topic": "Tree",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Flatten binary tree to linked list in-place using preorder.",
+    "examples": [
+      {
+        "input": "[1,2,5,3,4,null,6]",
+        "output": "[1,null,2,null,3,null,4,null,5,null,6]"
+      }
+    ],
+    "constraints": "0<=nodes<=2000",
+    "hints": [
+      "Reverse postorder: right, left, root",
+      "Morris traversal"
+    ]
+  },
+  {
+    "id": 81,
+    "title": "Climbing Stairs",
+    "topic": "Dynamic Programming",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Count distinct ways to climb n steps (1 or 2 at a time).",
+    "examples": [
+      {
+        "input": "n=3",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=n<=45",
+    "hints": [
+      "dp[i]=dp[i-1]+dp[i-2]",
+      "It's Fibonacci"
+    ]
+  },
+  {
+    "id": 82,
+    "title": "House Robber",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Max money robbing houses, no two adjacent.",
+    "examples": [
+      {
+        "input": "[2,7,9,3,1]",
+        "output": "12"
+      }
+    ],
+    "constraints": "1<=nums.length<=100",
+    "hints": [
+      "dp[i]=max(dp[i-1], dp[i-2]+nums[i])",
+      "Only need previous two values"
+    ]
+  },
+  {
+    "id": 83,
+    "title": "Coin Change",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Fewest coins to make amount. Return -1 if impossible.",
+    "examples": [
+      {
+        "input": "coins=[1,5,11], amount=15",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=coins.length<=12",
+    "hints": [
+      "dp[i]=min coins to make i",
+      "For each coin: dp[i]=min(dp[i], dp[i-coin]+1)"
+    ]
+  },
+  {
+    "id": 84,
+    "title": "Longest Increasing Subsequence",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return length of longest strictly increasing subsequence.",
+    "examples": [
+      {
+        "input": "[10,9,2,5,3,7,101,18]",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=nums.length<=2500",
+    "hints": [
+      "dp[i] = LIS ending at i",
+      "O(n log n): patience sorting with binary search"
+    ]
+  },
+  {
+    "id": 85,
+    "title": "Knapsack 0/1",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Max value fitting in knapsack of capacity W.",
+    "examples": [
+      {
+        "input": "weights=[1,3,4,5], values=[1,4,5,7], W=7",
+        "output": "9"
+      }
+    ],
+    "constraints": "1<=n,W<=1000",
+    "hints": [
+      "dp[i][w] = max value using first i items with capacity w",
+      "Include or exclude item i"
+    ]
+  },
+  {
+    "id": 86,
+    "title": "Longest Common Subsequence",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Length of LCS of two strings.",
+    "examples": [
+      {
+        "input": "text1='abcde', text2='ace'",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=lengths<=1000",
+    "hints": [
+      "dp[i][j] = LCS of text1[0..i] and text2[0..j]",
+      "If chars match: dp[i][j]=dp[i-1][j-1]+1"
+    ]
+  },
+  {
+    "id": 87,
+    "title": "Edit Distance",
+    "topic": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum operations to convert word1 to word2.",
+    "examples": [
+      {
+        "input": "word1='horse', word2='ros'",
+        "output": "3"
+      }
+    ],
+    "constraints": "0<=lengths<=500",
+    "hints": [
+      "dp[i][j] = edit distance of prefixes",
+      "Handle insert, delete, replace"
+    ]
+  },
+  {
+    "id": 88,
+    "title": "Unique Paths",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "How many unique paths from top-left to bottom-right of m x n grid?",
+    "examples": [
+      {
+        "input": "m=3, n=7",
+        "output": "28"
+      }
+    ],
+    "constraints": "1<=m,n<=100",
+    "hints": [
+      "dp[i][j]=dp[i-1][j]+dp[i][j-1]",
+      "Or C(m+n-2,m-1)"
+    ]
+  },
+  {
+    "id": 89,
+    "title": "Minimum Path Sum",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Min path sum top-left to bottom-right.",
+    "examples": [
+      {
+        "input": "[[1,3,1],[1,5,1],[4,2,1]]",
+        "output": "7"
+      }
+    ],
+    "constraints": "1<=m,n<=200",
+    "hints": [
+      "dp[i][j]=grid[i][j]+min(dp[i-1][j],dp[i][j-1])",
+      "Can modify grid in-place"
+    ]
+  },
+  {
+    "id": 90,
+    "title": "Decode Ways",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Count ways to decode digit string (A=1...Z=26).",
+    "examples": [
+      {
+        "input": "s='226'",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=s.length<=100",
+    "hints": [
+      "dp[i]=ways to decode s[0..i]",
+      "Check single and two-digit combos"
+    ]
+  },
+  {
+    "id": 91,
+    "title": "Partition Equal Subset Sum",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Can array be partitioned into two equal-sum subsets?",
+    "examples": [
+      {
+        "input": "[1,5,11,5]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=nums.length<=200",
+    "hints": [
+      "0/1 knapsack: can we reach sum/2?",
+      "dp[s]=true if sum s achievable"
+    ]
+  },
+  {
+    "id": 92,
+    "title": "Palindromic Substrings",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Count palindromic substrings in string.",
+    "examples": [
+      {
+        "input": "s='abc'",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=s.length<=1000",
+    "hints": [
+      "Expand around each center",
+      "Or DP: dp[i][j]=palindrome?"
+    ]
+  },
+  {
+    "id": 93,
+    "title": "Maximum Square",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Largest square of 1s in binary matrix. Return area.",
+    "examples": [
+      {
+        "input": "matrix with 1s and 0s",
+        "output": "4"
+      }
+    ],
+    "constraints": "m,n>=1",
+    "hints": [
+      "dp[i][j]=side of max square ending at (i,j)",
+      "dp[i][j]=min(left,up,diag)+1"
+    ]
+  },
+  {
+    "id": 94,
+    "title": "Word Break II",
+    "topic": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return all sentence segmentations using dictionary words.",
+    "examples": [
+      {
+        "input": "s='catsanddog', wordDict=['cat','cats','and','sand','dog']",
+        "output": "['cats and dog','cat sand dog']"
+      }
+    ],
+    "constraints": "1<=s.length<=20",
+    "hints": [
+      "DFS with memoization",
+      "dp[i]=sentences for s[i:]"
+    ]
+  },
+  {
+    "id": 95,
+    "title": "Burst Balloons",
+    "topic": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Burst balloons to maximize coins. Bursting i gives nums[i-1]*nums[i]*nums[i+1].",
+    "examples": [
+      {
+        "input": "nums=[3,1,5,8]",
+        "output": "167"
+      }
+    ],
+    "constraints": "1<=nums.length<=300",
+    "hints": [
+      "Interval DP: last balloon to burst in range",
+      "dp[i][j]=max coins bursting all between i and j"
+    ]
+  },
+  {
+    "id": 96,
+    "title": "Triangle Min Path Sum",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Min path sum from top to bottom of triangle.",
+    "examples": [
+      {
+        "input": "[[2],[3,4],[6,5,7],[4,1,8,3]]",
+        "output": "11"
+      }
+    ],
+    "constraints": "1<=triangle.length<=200",
+    "hints": [
+      "Bottom-up DP",
+      "dp[j]=triangle[i][j]+min(dp[j],dp[j+1])"
+    ]
+  },
+  {
+    "id": 97,
+    "title": "Regular Expression Matching",
+    "topic": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Implement regex with . and *.",
+    "examples": [
+      {
+        "input": "s='aa', p='a*'",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=lengths<=30",
+    "hints": [
+      "dp[i][j]=s[0..i] matches p[0..j]",
+      "Handle * as zero or more of preceding"
+    ]
+  },
+  {
+    "id": 98,
+    "title": "Ugly Number II",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return nth ugly number (only factors 2,3,5).",
+    "examples": [
+      {
+        "input": "n=10",
+        "output": "12"
+      }
+    ],
+    "constraints": "1<=n<=1690",
+    "hints": [
+      "Three pointers for multiples of 2,3,5",
+      "Pick minimum, advance that pointer"
+    ]
+  },
+  {
+    "id": 99,
+    "title": "Perfect Squares",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Least number of perfect squares summing to n.",
+    "examples": [
+      {
+        "input": "n=12",
+        "output": "3",
+        "explanation": "4+4+4"
+      }
+    ],
+    "constraints": "1<=n<=10^4",
+    "hints": [
+      "dp[i]=min squares summing to i",
+      "For each j^2<=i: dp[i]=min(dp[i],dp[i-j^2]+1)"
+    ]
+  },
+  {
+    "id": 100,
+    "title": "House Robber II",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Houses in circle. Max money with no adjacent robberies.",
+    "examples": [
+      {
+        "input": "nums=[2,3,2]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=nums.length<=100",
+    "hints": [
+      "Run House Robber on nums[0..n-2] and nums[1..n-1]",
+      "Take maximum"
+    ]
+  },
+  {
+    "id": 101,
+    "title": "Counting Bits",
+    "topic": "Dynamic Programming",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Return array where ans[i] = number of 1s in binary of i.",
+    "examples": [
+      {
+        "input": "n=5",
+        "output": "[0,1,1,2,1,2]"
+      }
+    ],
+    "constraints": "0<=n<=10^5",
+    "hints": [
+      "dp[i]=dp[i>>1]+(i&1)",
+      "Use right shift and last bit"
+    ]
+  },
+  {
+    "id": 102,
+    "title": "Minimum Cost Climbing Stairs",
+    "topic": "Dynamic Programming",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Find min cost to reach top of staircase.",
+    "examples": [
+      {
+        "input": "cost=[10,15,20]",
+        "output": "15"
+      }
+    ],
+    "constraints": "2<=cost.length<=1000",
+    "hints": [
+      "dp[i]=cost[i]+min(dp[i-1],dp[i-2])",
+      "Start from index 0 or 1"
+    ]
+  },
+  {
+    "id": 103,
+    "title": "Longest Bitonic Subsequence",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Length of longest subsequence that first increases then decreases.",
+    "examples": [
+      {
+        "input": "arr=[1,11,2,10,4,5,2,1]",
+        "output": "6"
+      }
+    ],
+    "constraints": "1<=arr.length<=1000",
+    "hints": [
+      "LIS from left + LDS from right at each index",
+      "Combine: lis[i]+lds[i]-1"
+    ]
+  },
+  {
+    "id": 104,
+    "title": "Number of LIS",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return number of longest increasing subsequences.",
+    "examples": [
+      {
+        "input": "nums=[1,3,5,4,7]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=nums.length<=2000",
+    "hints": [
+      "Track length and count of LIS at each position",
+      "dp_len[i] and dp_cnt[i]"
+    ]
+  },
+  {
+    "id": 105,
+    "title": "Frog Jump",
+    "topic": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Frog can jump k-1,k,k+1 from stone to stone. Can it reach last stone?",
+    "examples": [
+      {
+        "input": "stones=[0,1,3,5,6,8,12,17]",
+        "output": "true"
+      }
+    ],
+    "constraints": "2<=stones.length<=2000",
+    "hints": [
+      "DP with set of jumps at each stone",
+      "BFS/DFS with memoization"
+    ]
+  },
+  {
+    "id": 106,
+    "title": "Number of Islands",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Count islands (connected 1s) in binary grid.",
+    "examples": [
+      {
+        "input": "grid of 1s and 0s",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=m,n<=300",
+    "hints": [
+      "DFS/BFS from each unvisited 1",
+      "Mark visited to avoid recount"
+    ]
+  },
+  {
+    "id": 107,
+    "title": "Clone Graph",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Deep copy of undirected graph.",
+    "examples": [
+      {
+        "input": "adjList=[[2,4],[1,3],[2,4],[1,3]]",
+        "output": "Deep copy"
+      }
+    ],
+    "constraints": "1<=nodes<=100",
+    "hints": [
+      "BFS with hash map original->clone",
+      "Clone neighbors recursively"
+    ]
+  },
+  {
+    "id": 108,
+    "title": "Course Schedule",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Can you finish all courses given prerequisites?",
+    "examples": [
+      {
+        "input": "numCourses=2, [[1,0]]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=numCourses<=2000",
+    "hints": [
+      "Detect cycle in directed graph",
+      "Topological sort or DFS coloring"
+    ]
+  },
+  {
+    "id": 109,
+    "title": "Course Schedule II",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return valid course ordering.",
+    "examples": [
+      {
+        "input": "numCourses=4, [[1,0],[2,0],[3,1],[3,2]]",
+        "output": "[0,1,2,3]"
+      }
+    ],
+    "constraints": "1<=numCourses<=2000",
+    "hints": [
+      "Topological sort",
+      "DFS: add to result after visiting neighbors"
+    ]
+  },
+  {
+    "id": 110,
+    "title": "Pacific Atlantic Water Flow",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find cells from which water can flow to both oceans.",
+    "examples": [
+      {
+        "input": "heights grid",
+        "output": "list of cells"
+      }
+    ],
+    "constraints": "1<=m,n<=200",
+    "hints": [
+      "Reverse flow BFS from both ocean borders",
+      "Find intersection"
+    ]
+  },
+  {
+    "id": 111,
+    "title": "Word Ladder",
+    "topic": "Graph",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Min steps to transform beginWord to endWord changing one letter at a time.",
+    "examples": [
+      {
+        "input": "beginWord=hit, endWord=cog, wordList=[hot,dot,dog,lot,log,cog]",
+        "output": "5"
+      }
+    ],
+    "constraints": "1<=word.length<=10",
+    "hints": [
+      "BFS from beginWord",
+      "Try all 26 letter substitutions"
+    ]
+  },
+  {
+    "id": 112,
+    "title": "Number of Connected Components",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Count connected components in undirected graph.",
+    "examples": [
+      {
+        "input": "n=5, edges=[[0,1],[1,2],[3,4]]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=n<=2000",
+    "hints": [
+      "Union-Find or DFS/BFS",
+      "Count distinct roots or DFS calls"
+    ]
+  },
+  {
+    "id": 113,
+    "title": "Graph Valid Tree",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Determine if n nodes and edges form a valid tree.",
+    "examples": [
+      {
+        "input": "n=5, edges=[[0,1],[0,2],[0,3],[1,4]]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=n<=2000",
+    "hints": [
+      "Valid tree: connected + no cycle",
+      "edges.length==n-1 and connected"
+    ]
+  },
+  {
+    "id": 114,
+    "title": "Topological Sort",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return vertices of DAG in topological order.",
+    "examples": [
+      {
+        "input": "n=6, edges=[[5,2],[5,0],[4,0],[4,1],[2,3],[3,1]]",
+        "output": "[5,4,2,3,1,0]"
+      }
+    ],
+    "constraints": "1<=n<=10^4",
+    "hints": [
+      "Kahn's: start with zero in-degree nodes",
+      "DFS: add after visiting all neighbors"
+    ]
+  },
+  {
+    "id": 115,
+    "title": "Rotting Oranges",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minutes until no fresh oranges, or -1 if impossible.",
+    "examples": [
+      {
+        "input": "[[2,1,1],[1,1,0],[0,1,1]]",
+        "output": "4"
+      }
+    ],
+    "constraints": "m,n>=1",
+    "hints": [
+      "Multi-source BFS from all rotten oranges",
+      "Track time and fresh count"
+    ]
+  },
+  {
+    "id": 116,
+    "title": "01 Matrix",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Distance to nearest 0 for each cell.",
+    "examples": [
+      {
+        "input": "[[0,0,0],[0,1,0],[0,0,0]]",
+        "output": "[[0,0,0],[0,1,0],[0,0,0]]"
+      }
+    ],
+    "constraints": "1<=m,n<=10^4",
+    "hints": [
+      "Multi-source BFS from all 0 cells",
+      "Or DP two passes"
+    ]
+  },
+  {
+    "id": 117,
+    "title": "Shortest Path Dijkstra",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find shortest path from source to all vertices.",
+    "examples": [
+      {
+        "input": "weighted graph, source=0",
+        "output": "distances from 0"
+      }
+    ],
+    "constraints": "1<=n<=10^4",
+    "hints": [
+      "Min-heap with distances",
+      "Relax edges greedily"
+    ]
+  },
+  {
+    "id": 118,
+    "title": "Minimum Spanning Tree",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find MST weight using Kruskal's algorithm.",
+    "examples": [
+      {
+        "input": "n=4, edges with weights",
+        "output": "MST weight"
+      }
+    ],
+    "constraints": "1<=n<=1000",
+    "hints": [
+      "Sort edges by weight",
+      "Add if no cycle (Union-Find)"
+    ]
+  },
+  {
+    "id": 119,
+    "title": "Redundant Connection",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find edge to remove to restore tree property.",
+    "examples": [
+      {
+        "input": "edges=[[1,2],[1,3],[2,3]]",
+        "output": "[2,3]"
+      }
+    ],
+    "constraints": "3<=n<=1000",
+    "hints": [
+      "Union-Find: add edges one by one",
+      "Return first edge whose nodes already connected"
+    ]
+  },
+  {
+    "id": 120,
+    "title": "Network Delay Time",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Time for signal to reach all nodes from k.",
+    "examples": [
+      {
+        "input": "times=[[2,1,1],[2,3,1],[3,4,1]], n=4, k=2",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=k<=n<=100",
+    "hints": [
+      "Dijkstra from node k",
+      "Return max distance"
+    ]
+  },
+  {
+    "id": 121,
+    "title": "Is Graph Bipartite",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Can graph be 2-colored with no adjacent same color?",
+    "examples": [
+      {
+        "input": "graph=[[1,2,3],[0,2],[0,1,3],[0,2]]",
+        "output": "false"
+      }
+    ],
+    "constraints": "1<=graph.length<=100",
+    "hints": [
+      "BFS/DFS with 2-coloring",
+      "Conflict means not bipartite"
+    ]
+  },
+  {
+    "id": 122,
+    "title": "Critical Connections",
+    "topic": "Graph",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find all bridges whose removal disconnects the network.",
+    "examples": [
+      {
+        "input": "n=4, connections=[[0,1],[1,2],[2,0],[1,3]]",
+        "output": "[[1,3]]"
+      }
+    ],
+    "constraints": "2<=n<=10^5",
+    "hints": [
+      "Tarjan's bridge algorithm",
+      "Track discovery time and low values"
+    ]
+  },
+  {
+    "id": 123,
+    "title": "Alien Dictionary",
+    "topic": "Graph",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Determine character order from sorted alien word list.",
+    "examples": [
+      {
+        "input": "words=['wrt','wrf','er','ett','rftt']",
+        "output": "wertf"
+      }
+    ],
+    "constraints": "1<=words.length<=100",
+    "hints": [
+      "Build directed graph from adjacent words",
+      "Topological sort"
+    ]
+  },
+  {
+    "id": 124,
+    "title": "Surrounded Regions",
+    "topic": "Graph",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Capture all O regions surrounded by X.",
+    "examples": [
+      {
+        "input": "board of X and O",
+        "output": "O regions captured"
+      }
+    ],
+    "constraints": "m,n>=1",
+    "hints": [
+      "DFS from border O's mark safe",
+      "Flip all unsafe O to X"
+    ]
+  },
+  {
+    "id": 125,
+    "title": "Swim in Rising Water",
+    "topic": "Graph",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum time to swim from (0,0) to (n-1,n-1).",
+    "examples": [
+      {
+        "input": "grid=[[0,2],[1,3]]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=n<=50",
+    "hints": [
+      "Modified Dijkstra: cost=max elevation on path",
+      "Or binary search + BFS"
+    ]
+  },
+  {
+    "id": 126,
+    "title": "Merge Sort",
+    "topic": "Sorting",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Implement merge sort to sort array in ascending order.",
+    "examples": [
+      {
+        "input": "[64,34,25,12,22,11,90]",
+        "output": "[11,12,22,25,34,64,90]"
+      }
+    ],
+    "constraints": "1<=arr.length<=10^5",
+    "hints": [
+      "Divide into halves recursively",
+      "Merge two sorted halves"
+    ]
+  },
+  {
+    "id": 127,
+    "title": "Quick Sort",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Implement quicksort to sort array in-place.",
+    "examples": [
+      {
+        "input": "[10,7,8,9,1,5]",
+        "output": "[1,5,7,8,9,10]"
+      }
+    ],
+    "constraints": "1<=arr.length<=10^5",
+    "hints": [
+      "Pick pivot, partition around it",
+      "Recurse on both halves"
+    ]
+  },
+  {
+    "id": 128,
+    "title": "Top K Frequent Elements",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return k most frequent elements.",
+    "examples": [
+      {
+        "input": "nums=[1,1,1,2,2,3], k=2",
+        "output": "[1,2]"
+      }
+    ],
+    "constraints": "1<=k<=unique elements",
+    "hints": [
+      "Count frequencies",
+      "Bucket sort or min-heap"
+    ]
+  },
+  {
+    "id": 129,
+    "title": "Largest Number",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Arrange integers to form largest number.",
+    "examples": [
+      {
+        "input": "[3,30,34,5,9]",
+        "output": "9534330"
+      }
+    ],
+    "constraints": "1<=nums.length<=100",
+    "hints": [
+      "Custom comparator: compare ab vs ba",
+      "Sort with this comparator"
+    ]
+  },
+  {
+    "id": 130,
+    "title": "Meeting Rooms II",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum conference rooms required for all meetings.",
+    "examples": [
+      {
+        "input": "[[0,30],[5,10],[15,20]]",
+        "output": "2"
+      }
+    ],
+    "constraints": "0<=intervals.length<=10^4",
+    "hints": [
+      "Sort by start time",
+      "Min-heap of end times"
+    ]
+  },
+  {
+    "id": 131,
+    "title": "Find Median from Data Stream",
+    "topic": "Sorting",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Median of dynamically inserted integers.",
+    "examples": [
+      {
+        "input": "add(1),add(2),findMedian=1.5,add(3),findMedian=2.0",
+        "output": "as described"
+      }
+    ],
+    "constraints": "1<=val<=10^5",
+    "hints": [
+      "Max-heap lower half, min-heap upper half",
+      "Balance heap sizes"
+    ]
+  },
+  {
+    "id": 132,
+    "title": "Heap Sort",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Implement heap sort using max-heap.",
+    "examples": [
+      {
+        "input": "[12,11,13,5,6,7]",
+        "output": "[5,6,7,11,12,13]"
+      }
+    ],
+    "constraints": "1<=arr.length<=10^5",
+    "hints": [
+      "Build max-heap",
+      "Extract max repeatedly"
+    ]
+  },
+  {
+    "id": 133,
+    "title": "Sort Characters by Frequency",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Sort string characters by decreasing frequency.",
+    "examples": [
+      {
+        "input": "s='tree'",
+        "output": "eert"
+      }
+    ],
+    "constraints": "1<=s.length<=5*10^5",
+    "hints": [
+      "Count frequencies",
+      "Sort by frequency descending"
+    ]
+  },
+  {
+    "id": 134,
+    "title": "Minimum Arrows to Burst Balloons",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Minimum arrows to burst all balloon intervals.",
+    "examples": [
+      {
+        "input": "[[10,16],[2,8],[1,6],[7,12]]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=points.length<=10^5",
+    "hints": [
+      "Sort by end coordinate",
+      "Greedily shoot at end of each group"
+    ]
+  },
+  {
+    "id": 135,
+    "title": "H-Index",
+    "topic": "Sorting",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Max h where researcher has h papers with at least h citations.",
+    "examples": [
+      {
+        "input": "citations=[3,0,6,1,5]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=citations.length<=5000",
+    "hints": [
+      "Sort descending",
+      "Find largest i where citations[i]>=i+1"
+    ]
+  },
+  {
+    "id": 136,
+    "title": "Binary Search",
+    "topic": "Searching",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find target in sorted array using binary search.",
+    "examples": [
+      {
+        "input": "nums=[-1,0,3,5,9,12], target=9",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^4",
+    "hints": [
+      "left and right pointers",
+      "mid=(left+right)//2"
+    ]
+  },
+  {
+    "id": 137,
+    "title": "Search a 2D Matrix",
+    "topic": "Searching",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Search target in sorted m x n matrix in O(log mn).",
+    "examples": [
+      {
+        "input": "matrix=[[1,3,5,7],[10,11,16,20]], target=3",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=m,n<=100",
+    "hints": [
+      "Treat as flattened sorted array",
+      "Or start top-right: left if big, down if small"
+    ]
+  },
+  {
+    "id": 138,
+    "title": "Find Peak Element",
+    "topic": "Searching",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find a peak element in O(log n).",
+    "examples": [
+      {
+        "input": "[1,2,3,1]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=nums.length<=500",
+    "hints": [
+      "If nums[mid]<nums[mid+1] peak is right",
+      "Else peak is left or at mid"
+    ]
+  },
+  {
+    "id": 139,
+    "title": "Sqrt(x)",
+    "topic": "Searching",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Integer square root rounded down.",
+    "examples": [
+      {
+        "input": "x=8",
+        "output": "2"
+      }
+    ],
+    "constraints": "0<=x<=2^31-1",
+    "hints": [
+      "Binary search between 0 and x//2+1",
+      "Check mid*mid<=x<(mid+1)*(mid+1)"
+    ]
+  },
+  {
+    "id": 140,
+    "title": "Kth Smallest in Sorted Matrix",
+    "topic": "Searching",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find kth smallest in n x n sorted matrix.",
+    "examples": [
+      {
+        "input": "[[1,5,9],[10,11,13],[12,13,15]], k=8",
+        "output": "13"
+      }
+    ],
+    "constraints": "n>=1",
+    "hints": [
+      "Binary search on value range",
+      "Count elements<=mid"
+    ]
+  },
+  {
+    "id": 141,
+    "title": "Capacity to Ship Packages",
+    "topic": "Searching",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Minimum ship capacity to ship all packages in D days.",
+    "examples": [
+      {
+        "input": "weights=[1,2,3,4,5,6,7,8,9,10], days=5",
+        "output": "15"
+      }
+    ],
+    "constraints": "1<=days<=weights.length",
+    "hints": [
+      "Binary search between max(weights) and sum",
+      "Verify given capacity fits in D days"
+    ]
+  },
+  {
+    "id": 142,
+    "title": "Find First and Last Position",
+    "topic": "Searching",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find start and end index of target in sorted array.",
+    "examples": [
+      {
+        "input": "nums=[5,7,7,8,8,10], target=8",
+        "output": "[3,4]"
+      }
+    ],
+    "constraints": "0<=nums.length<=10^5",
+    "hints": [
+      "Two binary searches: leftmost and rightmost",
+      "Use lo/hi bias in mid calculation"
+    ]
+  },
+  {
+    "id": 143,
+    "title": "Median of Two Sorted Arrays",
+    "topic": "Searching",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Median of two sorted arrays in O(log(m+n)).",
+    "examples": [
+      {
+        "input": "nums1=[1,3], nums2=[2]",
+        "output": "2.0"
+      }
+    ],
+    "constraints": "m+n>=1",
+    "hints": [
+      "Binary search on smaller array",
+      "Partition both arrays"
+    ]
+  },
+  {
+    "id": 144,
+    "title": "Single Element in Sorted Array",
+    "topic": "Searching",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find element appearing once in sorted array of doubles.",
+    "examples": [
+      {
+        "input": "[1,1,2,3,3,4,4,8,8]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^5",
+    "hints": [
+      "Binary search on even indices",
+      "Compare with neighbor to decide direction"
+    ]
+  },
+  {
+    "id": 145,
+    "title": "Split Array Largest Sum",
+    "topic": "Searching",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Split array into m subarrays minimizing the largest sum.",
+    "examples": [
+      {
+        "input": "nums=[7,2,5,10,8], m=2",
+        "output": "18"
+      }
+    ],
+    "constraints": "1<=m<=nums.length",
+    "hints": [
+      "Binary search on answer",
+      "Check if max sum allows m subarrays"
+    ]
+  },
+  {
+    "id": 146,
+    "title": "Aggressive Cows",
+    "topic": "Searching",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Place C cows to maximize minimum distance.",
+    "examples": [
+      {
+        "input": "stalls=[1,2,4,8,9], C=3",
+        "output": "3"
+      }
+    ],
+    "constraints": "2<=N<=10^5",
+    "hints": [
+      "Binary search on minimum distance",
+      "Check if distance allows all cows"
+    ]
+  },
+  {
+    "id": 147,
+    "title": "Minimum in Rotated Sorted Array",
+    "topic": "Searching",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find minimum in rotated sorted array in O(log n).",
+    "examples": [
+      {
+        "input": "[3,4,5,1,2]",
+        "output": "1"
+      }
+    ],
+    "constraints": "1<=nums.length<=5000",
+    "hints": [
+      "If mid>right, minimum is in right half",
+      "Binary search"
+    ]
+  },
+  {
+    "id": 148,
+    "title": "Two Sum Hash Map",
+    "topic": "Hash",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Find two indices summing to target using O(n) hash map approach.",
+    "examples": [
+      {
+        "input": "nums=[2,7,11,15], target=9",
+        "output": "[0,1]"
+      }
+    ],
+    "constraints": "2<=nums.length<=10^4",
+    "hints": [
+      "Store num:index in map",
+      "Check target-num exists"
+    ]
+  },
+  {
+    "id": 149,
+    "title": "Top K Frequent Elements",
+    "topic": "Hash",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return k most frequent elements using hash map.",
+    "examples": [
+      {
+        "input": "nums=[1,1,1,2,2,3], k=2",
+        "output": "[1,2]"
+      }
+    ],
+    "constraints": "1<=k<=unique",
+    "hints": [
+      "Count with hash map",
+      "Bucket sort or heap for top k"
+    ]
+  },
+  {
+    "id": 150,
+    "title": "Subarray Sum Equals K",
+    "topic": "Hash",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Count subarrays summing to k using prefix sums.",
+    "examples": [
+      {
+        "input": "nums=[1,1,1], k=2",
+        "output": "2"
+      }
+    ],
+    "constraints": "-1000<=nums[i]<=1000",
+    "hints": [
+      "Prefix sum + hash map",
+      "Check if (sum-k) seen before"
+    ]
+  },
+  {
+    "id": 151,
+    "title": "Longest Subarray Sum K",
+    "topic": "Hash",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Longest subarray summing to k.",
+    "examples": [
+      {
+        "input": "nums=[10,5,2,7,1,9], k=15",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^5",
+    "hints": [
+      "Prefix sum + first occurrence map",
+      "length = index - first_occurrence[sum-k]"
+    ]
+  },
+  {
+    "id": 152,
+    "title": "Contiguous Array",
+    "topic": "Hash",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Longest subarray with equal 0s and 1s.",
+    "examples": [
+      {
+        "input": "[0,1,0]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^5",
+    "hints": [
+      "Replace 0 with -1",
+      "Longest subarray summing to 0"
+    ]
+  },
+  {
+    "id": 153,
+    "title": "Happy Number",
+    "topic": "Hash",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Is n a happy number? Replace by sum of squared digits until 1 or cycle.",
+    "examples": [
+      {
+        "input": "n=19",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=n<=2^31-1",
+    "hints": [
+      "Hash set to detect cycle",
+      "Or Floyd's fast/slow"
+    ]
+  },
+  {
+    "id": 154,
+    "title": "4Sum II",
+    "topic": "Hash",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Count tuples where A[i]+B[j]+C[k]+D[l]==0.",
+    "examples": [
+      {
+        "input": "A=[1,2],B=[-2,-1],C=[-1,2],D=[0,2]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=length<=200",
+    "hints": [
+      "Hash map of A[i]+B[j] sums",
+      "For C[k]+D[l] check negation in map"
+    ]
+  },
+  {
+    "id": 155,
+    "title": "Design HashMap",
+    "topic": "Hash",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Implement HashMap without built-in libraries.",
+    "examples": [
+      {
+        "input": "put(1,1),put(2,2),get(1)=1,get(3)=-1",
+        "output": "as described"
+      }
+    ],
+    "constraints": "0<=key,value<=10^6",
+    "hints": [
+      "Array of buckets with chaining",
+      "Hash = key % bucketSize"
+    ]
+  },
+  {
+    "id": 156,
+    "title": "Brick Wall",
+    "topic": "Hash",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Line crossing fewest bricks.",
+    "examples": [
+      {
+        "input": "wall rows",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=wall.length<=10^4",
+    "hints": [
+      "Count gap positions with hash map",
+      "Answer = rows - max gaps"
+    ]
+  },
+  {
+    "id": 157,
+    "title": "LFU Cache",
+    "topic": "Hash",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Least Frequently Used cache with O(1) get and put.",
+    "examples": [
+      {
+        "input": "LFUCache(2): put(1,1),put(2,2),get(1)=1,put(3,3),get(2)=-1",
+        "output": "as described"
+      }
+    ],
+    "constraints": "1<=capacity<=10^4",
+    "hints": [
+      "HashMap key->val, key->freq, freq->LinkedHashSet",
+      "Track minimum frequency"
+    ]
+  },
+  {
+    "id": 158,
+    "title": "Activity Selection",
+    "topic": "Greedy",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Maximum non-overlapping activities.",
+    "examples": [
+      {
+        "input": "start=[1,3,0,5,8,5], end=[2,4,6,7,9,9]",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=n<=10^5",
+    "hints": [
+      "Sort by end time",
+      "Always pick earliest ending"
+    ]
+  },
+  {
+    "id": 159,
+    "title": "Fractional Knapsack",
+    "topic": "Greedy",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Maximize value with fractional items.",
+    "examples": [
+      {
+        "input": "weights=[10,20,30], values=[60,100,120], W=50",
+        "output": "240"
+      }
+    ],
+    "constraints": "1<=n<=1000",
+    "hints": [
+      "Sort by value/weight ratio",
+      "Take as much as possible"
+    ]
+  },
+  {
+    "id": 160,
+    "title": "Jump Game II",
+    "topic": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum jumps to reach last index.",
+    "examples": [
+      {
+        "input": "[2,3,1,1,4]",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=nums.length<=10^4",
+    "hints": [
+      "Track current and next reach",
+      "Increment jumps when exceeding current reach"
+    ]
+  },
+  {
+    "id": 161,
+    "title": "Gas Station",
+    "topic": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Starting station to complete circular route, or -1.",
+    "examples": [
+      {
+        "input": "gas=[1,2,3,4,5], cost=[3,4,5,1,2]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=n<=10^5",
+    "hints": [
+      "Total gas>=cost means solution exists",
+      "Reset start when tank negative"
+    ]
+  },
+  {
+    "id": 162,
+    "title": "Task Scheduler",
+    "topic": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum intervals to finish tasks with cooldown n.",
+    "examples": [
+      {
+        "input": "tasks=['A','A','A','B','B','B'], n=2",
+        "output": "8"
+      }
+    ],
+    "constraints": "1<=n<=100",
+    "hints": [
+      "Sort by frequency",
+      "Formula: (maxFreq-1)*(n+1)+count of maxFreq tasks"
+    ]
+  },
+  {
+    "id": 163,
+    "title": "Assign Cookies",
+    "topic": "Greedy",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Maximize content children assigning cookies.",
+    "examples": [
+      {
+        "input": "g=[1,2,3], s=[1,1]",
+        "output": "1"
+      }
+    ],
+    "constraints": "1<=lengths<=3*10^4",
+    "hints": [
+      "Sort both arrays",
+      "Assign smallest sufficient cookie"
+    ]
+  },
+  {
+    "id": 164,
+    "title": "Non-overlapping Intervals",
+    "topic": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Minimum intervals to remove to make rest non-overlapping.",
+    "examples": [
+      {
+        "input": "[[1,2],[2,3],[3,4],[1,3]]",
+        "output": "1"
+      }
+    ],
+    "constraints": "1<=intervals.length<=10^5",
+    "hints": [
+      "Sort by end time",
+      "Count max non-overlapping (activity selection)"
+    ]
+  },
+  {
+    "id": 165,
+    "title": "Partition Labels",
+    "topic": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Partition string so each letter in at most one part.",
+    "examples": [
+      {
+        "input": "s='ababcbacadefegdehijhklij'",
+        "output": "[9,7,8]"
+      }
+    ],
+    "constraints": "1<=s.length<=500",
+    "hints": [
+      "Find last occurrence of each char",
+      "Extend partition to max last occurrence"
+    ]
+  },
+  {
+    "id": 166,
+    "title": "Minimum Platforms",
+    "topic": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum train platforms needed.",
+    "examples": [
+      {
+        "input": "arr=[900,940,950,1100], dep=[910,1200,1120,1130]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=n<=10^4",
+    "hints": [
+      "Sort arrivals and departures",
+      "Two pointer counting active trains"
+    ]
+  },
+  {
+    "id": 167,
+    "title": "Candy Distribution",
+    "topic": "Greedy",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum candies so higher-rated child gets more than neighbors.",
+    "examples": [
+      {
+        "input": "ratings=[1,0,2]",
+        "output": "5"
+      }
+    ],
+    "constraints": "1<=ratings.length<=2*10^4",
+    "hints": [
+      "Two passes: left-to-right and right-to-left",
+      "Take max of both"
+    ]
+  },
+  {
+    "id": 168,
+    "title": "Lemonade Change",
+    "topic": "Greedy",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro"
+    ],
+    "description": "Can you give correct change to all customers?",
+    "examples": [
+      {
+        "input": "bills=[5,5,5,10,20]",
+        "output": "true"
+      }
+    ],
+    "constraints": "1<=bills.length<=10^5",
+    "hints": [
+      "Track $5 and $10 counts",
+      "For $20 prefer $10+$5 over three $5s"
+    ]
+  },
+  {
+    "id": 169,
+    "title": "Queue Reconstruction by Height",
+    "topic": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Reconstruct queue from (height, k) pairs.",
+    "examples": [
+      {
+        "input": "[[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]",
+        "output": "[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]"
+      }
+    ],
+    "constraints": "1<=people.length<=2000",
+    "hints": [
+      "Sort by height desc k asc",
+      "Insert each at index k"
+    ]
+  },
+  {
+    "id": 170,
+    "title": "Permutations",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return all permutations of distinct integers.",
+    "examples": [
+      {
+        "input": "nums=[1,2,3]",
+        "output": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]"
+      }
+    ],
+    "constraints": "1<=nums.length<=6",
+    "hints": [
+      "Swap current with each remaining",
+      "Or use visited array"
+    ]
+  },
+  {
+    "id": 171,
+    "title": "Combinations",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "All combinations of k numbers from range [1,n].",
+    "examples": [
+      {
+        "input": "n=4, k=2",
+        "output": "[[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]"
+      }
+    ],
+    "constraints": "1<=n<=20",
+    "hints": [
+      "Backtrack from start to n",
+      "Prune if not enough numbers remaining"
+    ]
+  },
+  {
+    "id": 172,
+    "title": "Combination Sum",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "All combinations summing to target. Reuse allowed.",
+    "examples": [
+      {
+        "input": "candidates=[2,3,6,7], target=7",
+        "output": "[[2,2,3],[7]]"
+      }
+    ],
+    "constraints": "1<=candidates.length<=30",
+    "hints": [
+      "Backtrack with start index",
+      "Sort and prune when sum > target"
+    ]
+  },
+  {
+    "id": 173,
+    "title": "Combination Sum II",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "All unique combinations summing to target. No reuse.",
+    "examples": [
+      {
+        "input": "[10,1,2,7,6,1,5], target=8",
+        "output": "[[1,1,6],[1,2,5],[1,7],[2,6]]"
+      }
+    ],
+    "constraints": "1<=candidates.length<=100",
+    "hints": [
+      "Sort, backtrack with start index",
+      "Skip duplicates at same level"
+    ]
+  },
+  {
+    "id": 174,
+    "title": "Letter Combinations",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "All letter combinations for phone digits 2-9.",
+    "examples": [
+      {
+        "input": "digits='23'",
+        "output": "['ad','ae','af','bd','be','bf','cd','ce','cf']"
+      }
+    ],
+    "constraints": "0<=digits.length<=4",
+    "hints": [
+      "Map digit to letters",
+      "Backtrack adding one letter per digit"
+    ]
+  },
+  {
+    "id": 175,
+    "title": "Subsets",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Return power set of unique elements.",
+    "examples": [
+      {
+        "input": "nums=[1,2,3]",
+        "output": "[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]"
+      }
+    ],
+    "constraints": "nums.length<=10",
+    "hints": [
+      "Backtrack include/exclude each element",
+      "Or iterative"
+    ]
+  },
+  {
+    "id": 176,
+    "title": "Subsets II",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Power set with duplicates, no duplicate subsets.",
+    "examples": [
+      {
+        "input": "nums=[1,2,2]",
+        "output": "[[],[1],[1,2],[1,2,2],[2],[2,2]]"
+      }
+    ],
+    "constraints": "nums.length<=10",
+    "hints": [
+      "Sort first",
+      "Skip duplicates at same recursion level"
+    ]
+  },
+  {
+    "id": 177,
+    "title": "Word Search",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Check if word exists in character grid.",
+    "examples": [
+      {
+        "input": "board grid, word='ABCCED'",
+        "output": "true"
+      }
+    ],
+    "constraints": "m,n>=1",
+    "hints": [
+      "DFS from cells matching first char",
+      "Mark visited, backtrack after"
+    ]
+  },
+  {
+    "id": 178,
+    "title": "N Queens",
+    "topic": "Backtracking",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Place N queens with no attacks. Return all solutions.",
+    "examples": [
+      {
+        "input": "n=4",
+        "output": "2 solutions"
+      }
+    ],
+    "constraints": "1<=n<=9",
+    "hints": [
+      "Row by row placement",
+      "Track columns, diagonals, anti-diagonals"
+    ]
+  },
+  {
+    "id": 179,
+    "title": "Sudoku Solver",
+    "topic": "Backtracking",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Solve Sudoku by filling empty cells.",
+    "examples": [
+      {
+        "input": "9x9 partial board",
+        "output": "completed board"
+      }
+    ],
+    "constraints": "board.length==9",
+    "hints": [
+      "Try digits 1-9 for each empty cell",
+      "Backtrack on failure"
+    ]
+  },
+  {
+    "id": 180,
+    "title": "Palindrome Partitioning",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "All ways to partition string into palindromes.",
+    "examples": [
+      {
+        "input": "s='aab'",
+        "output": "[['a','a','b'],['aa','b']]"
+      }
+    ],
+    "constraints": "1<=s.length<=16",
+    "hints": [
+      "Backtrack trying palindrome prefixes",
+      "Precompute palindromes with DP"
+    ]
+  },
+  {
+    "id": 181,
+    "title": "Restore IP Addresses",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "All valid IP addresses from digit string.",
+    "examples": [
+      {
+        "input": "s='25525511135'",
+        "output": "['255.255.11.135','255.255.111.35']"
+      }
+    ],
+    "constraints": "1<=s.length<=20",
+    "hints": [
+      "Place 3 dots in valid positions",
+      "Each segment 0-255, no leading zeros"
+    ]
+  },
+  {
+    "id": 182,
+    "title": "Remove Invalid Parentheses",
+    "topic": "Backtracking",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Remove minimum parentheses to make valid. All results.",
+    "examples": [
+      {
+        "input": "s='()())()'",
+        "output": "['()()()','(())()']"
+      }
+    ],
+    "constraints": "1<=s.length<=25",
+    "hints": [
+      "BFS removing one at a time",
+      "Stop at first level with valid strings"
+    ]
+  },
+  {
+    "id": 183,
+    "title": "Expression Add Operators",
+    "topic": "Backtracking",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Insert +,-,* between digits to reach target.",
+    "examples": [
+      {
+        "input": "num='123', target=6",
+        "output": "['1*2*3','1+2+3']"
+      }
+    ],
+    "constraints": "1<=num.length<=10",
+    "hints": [
+      "Backtrack inserting operators",
+      "Track last multiplied term for *"
+    ]
+  },
+  {
+    "id": 184,
+    "title": "Beautiful Arrangement",
+    "topic": "Backtracking",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Count permutations where perm[i]%i==0 or i%perm[i]==0.",
+    "examples": [
+      {
+        "input": "n=2",
+        "output": "2"
+      }
+    ],
+    "constraints": "1<=n<=15",
+    "hints": [
+      "Backtrack assigning numbers to positions",
+      "Prune when condition fails"
+    ]
+  },
+  {
+    "id": 185,
+    "title": "Pow(x,n)",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Compute x raised to power n efficiently.",
+    "examples": [
+      {
+        "input": "x=2.0, n=10",
+        "output": "1024.0"
+      },
+      {
+        "input": "x=2.0, n=-2",
+        "output": "0.25"
+      }
+    ],
+    "constraints": "-100<x<100",
+    "hints": [
+      "x^n = x^(n/2) * x^(n/2)",
+      "Handle negative n with reciprocal"
+    ]
+  },
+  {
+    "id": 186,
+    "title": "Count Inversions",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Count pairs where i<j but arr[i]>arr[j].",
+    "examples": [
+      {
+        "input": "arr=[2,4,1,3,5]",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=arr.length<=10^5",
+    "hints": [
+      "Modify merge sort",
+      "Count during merge step"
+    ]
+  },
+  {
+    "id": 187,
+    "title": "Maximum Subarray DC",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Maximum subarray sum using divide and conquer.",
+    "examples": [
+      {
+        "input": "[-2,1,-3,4,-1,2,1,-5,4]",
+        "output": "6"
+      }
+    ],
+    "constraints": "-10^4<=nums[i]<=10^4",
+    "hints": [
+      "Split at midpoint",
+      "Max is in left, right, or crosses mid"
+    ]
+  },
+  {
+    "id": 188,
+    "title": "Different Ways to Add Parentheses",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "All possible results from different parenthesizations.",
+    "examples": [
+      {
+        "input": "expression='2-1-1'",
+        "output": "[0,2]"
+      }
+    ],
+    "constraints": "1<=expression.length<=20",
+    "hints": [
+      "Divide at each operator",
+      "Combine results from both sides"
+    ]
+  },
+  {
+    "id": 189,
+    "title": "Kth Largest in Stream",
+    "topic": "Divide and Conquer",
+    "difficulty": "Easy",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Find kth largest in data stream.",
+    "examples": [
+      {
+        "input": "KthLargest(3,[4,5,8,2]), add(3)=4",
+        "output": "4"
+      }
+    ],
+    "constraints": "1<=k<=10^4",
+    "hints": [
+      "Min-heap of size k",
+      "Top is kth largest"
+    ]
+  },
+  {
+    "id": 190,
+    "title": "Find K Closest Elements",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "K closest integers to x in sorted array.",
+    "examples": [
+      {
+        "input": "arr=[1,2,3,4,5], k=4, x=3",
+        "output": "[1,2,3,4]"
+      }
+    ],
+    "constraints": "1<=k<=arr.length",
+    "hints": [
+      "Binary search for window start",
+      "arr[mid]+arr[mid+k] >= 2*x"
+    ]
+  },
+  {
+    "id": 191,
+    "title": "Closest Pair of Points",
+    "topic": "Divide and Conquer",
+    "difficulty": "Hard",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Minimum Euclidean distance between any two points.",
+    "examples": [
+      {
+        "input": "points=[(0,0),(3,4),(1,1)]",
+        "output": "sqrt(2)"
+      }
+    ],
+    "constraints": "2<=n<=10^5",
+    "hints": [
+      "Divide by x-midpoint",
+      "Check strip of width 2*delta"
+    ]
+  },
+  {
+    "id": 192,
+    "title": "Longest Substring K Repeating",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Longest substring where every char appears >= k times.",
+    "examples": [
+      {
+        "input": "s='aaabb', k=3",
+        "output": "3"
+      }
+    ],
+    "constraints": "1<=s.length<=10^4",
+    "hints": [
+      "Divide at chars with freq < k",
+      "Recurse on each segment"
+    ]
+  },
+  {
+    "id": 193,
+    "title": "Construct Quad Tree",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Microsoft",
+      "Google",
+      "Amazon"
+    ],
+    "description": "Build quad tree from binary grid.",
+    "examples": [
+      {
+        "input": "[[0,1],[1,0]]",
+        "output": "5-node quad tree"
+      }
+    ],
+    "constraints": "n is power of 2",
+    "hints": [
+      "Leaf if all same value",
+      "Else divide into 4 quadrants"
+    ]
+  },
+  {
+    "id": 194,
+    "title": "Beautiful Array",
+    "topic": "Divide and Conquer",
+    "difficulty": "Medium",
+    "companies": [
+      "Microsoft",
+      "Google",
+      "Amazon",
+      "Adobe",
+      "Samsung",
+      "Atlassian"
+    ],
+    "description": "Permutation where A[k]*2 != A[i]+A[j] for i<k<j.",
+    "examples": [
+      {
+        "input": "n=4",
+        "output": "[2,1,4,3]"
+      }
+    ],
+    "constraints": "1<=n<=1000",
+    "hints": [
+      "Odd numbers in first half evens in second",
+      "Recursive construction"
+    ]
+  }
+]
